@@ -97,4 +97,9 @@ source ~/fzf-git.sh/fzf-git.sh
 eval "$(atuin init zsh)"
 
 alias lg="lazygit"
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+alias zl="zellij"
+
+bindkey -s '^Z' 'zellij^M'
