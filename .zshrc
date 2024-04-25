@@ -102,4 +102,5 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 alias zl="zellij"
 
-bindkey -s '^Z' 'zellij^M'
+bindkey -r '^T'
+bindkey '^F' fzf-file-widget
