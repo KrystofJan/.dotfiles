@@ -98,6 +98,13 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+
+vim.opt.guifont = { 'JetBrains_Mono', 'h12' }
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -156,6 +163,17 @@ vim.opt.guicursor = ''
 vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
+--
+-- AUTOCOMPLETE BRACKETS AND QUOTES
+--
+vim.keymap.set('i', '{', '{}<Left>', { desc = 'Autocomplete squerlbrackets and quotes' })
+vim.keymap.set('i', '{<CR>', '{<CR>}<ESC>ko', { desc = 'Autocomplete brackets and quotes' })
+
+vim.keymap.set('i', '(', '()<Left>', { desc = 'Autocomplete brackets and quotes' })
+
+vim.keymap.set('i', '[', '[]<Left>', { desc = 'Autocomplete brackets and quotes' })
+
+vim.keymap.set('i', '"', '""<Left>', { desc = 'Autocomplete brackets and quotes' })
 --  See `:help vim.keymap.set()`
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
@@ -240,7 +258,12 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-
+  {
+    'olrtg/nvim-emmet',
+    config = function()
+      vim.keymap.set({ 'n', 'v' }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
+    end,
+  },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
@@ -430,7 +453,7 @@ require('lazy').setup({
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
       --
-      -- LSP stands for Language Server Protocol. It's a protocol that helps editors
+      -- LSP stands for Language Server Protocol. It's a protocol that helpp editors
       -- and language tooling communicate in a standardized fashion.
       --
       -- In general, you have a "server" which is some tool built to understand a particular
@@ -569,7 +592,33 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              imports = {
+                granularity = {
+                  group = 'module',
+                },
+                prefix = 'self',
+              },
+              cargo = {
+                buildScripts = {
+                  enable = true,
+                },
+              },
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        },
+        emmet_language_server = {
+          settings = {
+            ['emmet_language_server'] = {
+              filetypes = { 'css', 'html', 'vue', 'less', 'sass', 'scss' },
+            },
+          },
+        },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
