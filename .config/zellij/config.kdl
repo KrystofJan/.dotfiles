@@ -23,6 +23,7 @@ keybinds {
         bind "-" { Resize "Decrease"; }
     }
     pane {
+        unbind "Ctrl g" "Ctrl n" "Ctrl p" "Ctrl m" "Ctrl s" "Ctrl o"
         bind "Alt p" { SwitchToMode "Normal"; }
         bind "h" "Left" { MoveFocus "Left"; SwitchToMode "Normal";}
         bind "l" "Right" { MoveFocus "Right"; SwitchToMode "Normal";}
