@@ -100,7 +100,7 @@ alias lg="lazygit"
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-alias zl="zellij"
+alias zl="zellij options --simplified-ui true"
 
 bindkey -r '^T'
 bindkey '^F' fzf-file-widget
