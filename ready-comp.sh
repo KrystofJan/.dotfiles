@@ -6,6 +6,6 @@ ln -s ~/.dotfiles/.icons ~/.icons
 ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
 ln -s ~/.dotfiles/.config/alacritty ~/.config/alacritty
 ln -s ~/.dotfiles/.config/lazygit ~/.config/lazygit
-ln -s ~/.dotfiles/powerlevel10k/ ~/powerlevel10k
-
+ln -s ~/.dotfiles/.config/hypr ~/.config/hypr
+ln -s ~/.dotfiles/.config/waybar ~/.config/waybar
 

@@ -3,6 +3,10 @@ keybinds {
     unbind "Ctrl h"
     normal {
         unbind "Ctrl g" "Ctrl n" "Ctrl p" "Ctrl m" "Ctrl s" "Ctrl o" "Ctrl t"
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" {GoToTab 2;}
+        bind "Alt 3" {GoToTab 3;}
+        bind "Alt 4" {GoToTab 4;}
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
