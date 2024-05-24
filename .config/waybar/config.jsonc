@@ -40,7 +40,7 @@
     "hyprland/window": {
         "format": "👉 {}",
         "rewrite": {
-            "(.*) — Mozilla Firefox": "🌐 Firefox",
+            "(.*) — Mozilla Firefox": "🌐Mozilla Firefox",
             "(.*)Zellij(.*)-(.*)": "👾 Zellij - $2 ",
             ".*Spotify.*": "♬ Spotify ",
             ".*Discord.*": "🗨️ Discord",
