@@ -54,6 +54,7 @@ lsp_config.lua_ls.setup {
     },
   },
 }
+
 lsp_config.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -63,4 +64,20 @@ lsp_config.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {},
   },
+}
+
+lsp_config.nil_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = function()
+    return vim.loop.cwd()
+  end,
+}
+
+lsp_config.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = function()
+    return vim.loop.cwd()
+  end,
 }
