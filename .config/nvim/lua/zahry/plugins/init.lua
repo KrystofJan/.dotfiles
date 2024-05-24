@@ -1,7 +1,10 @@
-require("zahry/plugins/colorscheme")
-require("zahry/plugins/gitplugs")
-require("zahry/plugins/telescope")
-require("zahry/plugins/whichkey")
-require("zahry/plugins/lsp")
-require("Comment").setup()
+require 'zahry/plugins/colorscheme'
+require 'zahry/plugins/gitplugs'
+require 'zahry/plugins/telescope'
+require 'zahry/plugins/whichkey'
+require 'zahry/plugins/lsp'
+require 'zahry/plugins/conform'
+require 'zahry/plugins/lualine'
+require 'zahry/plugins/mini'
+require('Comment').setup()
 

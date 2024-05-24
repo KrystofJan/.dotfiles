@@ -290,7 +290,7 @@ require('lazy').setup({
         --
 
         lua_ls = {
-          cmd = { '/nix/store/yzjiz6vvdhg7s875km3aq279rmsfi895-lua-language-server-3.9.1' },
+          -- cmd = {...},
           -- filetypes = { ...},
           -- capabilities = {},
           settings = {
