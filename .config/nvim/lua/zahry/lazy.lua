@@ -7,7 +7,6 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-
 --  To update plugins you can run
 --    :Lazy update
 require('lazy').setup({
@@ -290,6 +289,9 @@ require('lazy').setup({
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
         tsserver = {},
         --
+        volar = {
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+        }, -- vue support
 
         lua_ls = {
           -- cmd = {...},

@@ -64,4 +64,3 @@ vim.opt.cursorline = true
 vim.opt.guicursor = ''
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
-
