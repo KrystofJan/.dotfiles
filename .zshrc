@@ -47,9 +47,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
+eval "$(~/homebrew/bin/brew shellenv)"
 # ---- FZF -----
 
 # Set up fzf key bindings and fuzzy completion
@@ -105,8 +103,20 @@ alias zl="zellij options --simplified-ui true"
 bindkey -r '^T'
 bindkey '^F' fzf-file-widget
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-alias py="python3"
+. "$HOME/.cargo/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/krystofjan/google-cloud-sdk/path.zsh.inc' ]; then . '/home/krystofjan/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/krystofjan/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/krystofjan/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH=$PATH:/usr/local/go/bin
