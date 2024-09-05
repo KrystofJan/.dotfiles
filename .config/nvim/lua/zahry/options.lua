@@ -23,7 +23,19 @@ vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  See `:help 'clipboard'`
---  vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
+vim.g.clipboard = {
+  name = 'wl-clipboard',
+  copy = {
+    ['+'] = 'wl-copy',
+    ['*'] = 'wl-copy',
+  },
+  paste = {
+    ['+'] = 'wl-paste',
+    ['*'] = 'wl-paste',
+  },
+  cache_enabled = 0,
+}
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -64,4 +76,3 @@ vim.opt.cursorline = true
 vim.opt.guicursor = ''
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
-
