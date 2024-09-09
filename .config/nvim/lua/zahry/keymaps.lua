@@ -1,25 +1,25 @@
 -- [[ Basic Keymaps ]]
 -- AUTOCOMPLETE BRACKETS AND QUOTES
 --  See `:help vim.keymap.set()`
-local brackets = {
-  ['{'] = '}',
-  ['('] = ')',
-  ['['] = ']',
-}
-
--- Loop through each bracket pair
-for open, close in pairs(brackets) do
-  -- Autocomplete brackets
-  vim.keymap.set('i', open, open .. close .. '<Left>', { desc = 'Autocomplete brackets and quotes' })
-
-  -- Handle closing bracket
-  vim.keymap.set('i', open .. close, open .. ' ' .. close, { desc = 'Handle autocompleted brackets' })
-
-  -- Handle opening bracket followed by Enter
-  vim.keymap.set('i', open .. '<CR>', open .. '<CR>' .. close .. '<ESC>ko', { desc = 'Autocomplete brackets and quotes with Enter' })
-end
-
-vim.keymap.set('i', '"', '""<Left>', { desc = 'Autocomplete brackets and quotes' })
+-- local brackets = {
+--   ['{'] = '}',
+--   ['('] = ')',
+--   ['['] = ']',
+-- }
+--
+-- -- Loop through each bracket pair
+-- for open, close in pairs(brackets) do
+--   -- Autocomplete brackets
+--   vim.keymap.set('i', open, open .. close .. '<Left>', { desc = 'Autocomplete brackets and quotes' })
+--
+--   -- Handle closing bracket
+--   vim.keymap.set('i', open .. close, open .. ' ' .. close, { desc = 'Handle autocompleted brackets' })
+--
+--   -- Handle opening bracket followed by Enter
+--   vim.keymap.set('i', open .. '<CR>', open .. '<CR>' .. close .. '<ESC>ko', { desc = 'Autocomplete brackets and quotes with Enter' })
+-- end
+--
+-- vim.keymap.set('i', '"', '""<Left>', { desc = 'Autocomplete brackets and quotes' })
 
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
