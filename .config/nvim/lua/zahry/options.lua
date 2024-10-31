@@ -31,12 +31,11 @@ vim.g.clipboard = {
     ['*'] = 'wl-copy',
   },
   paste = {
-    ['+'] = 'wl-paste',
-    ['*'] = 'wl-paste',
+    ['+'] = "wl-paste | sed -e '$s/\r$//' -e '$s/\n$//'",
+    ['*'] = "wl-paste | sed -e '$s/\r$//' -e '$s/\n$//'",
   },
   cache_enabled = 0,
 }
-
 -- Enable break indent
 vim.opt.breakindent = true
 

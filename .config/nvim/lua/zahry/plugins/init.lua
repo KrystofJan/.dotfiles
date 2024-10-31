@@ -7,5 +7,5 @@ require 'zahry/plugins/conform'
 require 'zahry/plugins/lualine'
 require 'zahry/plugins/mini'
 require 'zahry/plugins/cmp'
+require 'zahry/plugins/oil'
 require('Comment').setup()
-
