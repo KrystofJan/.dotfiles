@@ -68,6 +68,7 @@
     ".config/nvim".source = ./.config/nvim;
     ".config/zellij".source = ./.config/zellij;
     ".config/alacritty".source = ./.config/alacritty;
+    ".config/kitty".source = ./.config/kitty;
     ".config/lazygit".source = ./.config/lazygit;
     "fzf-git.sh/fzf-git.sh".source = ./fzf-git.sh;
     # # You can also set the file content immediately.
