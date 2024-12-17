@@ -74,7 +74,7 @@ lsp_config.nil_ls.setup {
   end,
 }
 
-lsp_config.tsserver.setup {
+lsp_config.ts_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = function()

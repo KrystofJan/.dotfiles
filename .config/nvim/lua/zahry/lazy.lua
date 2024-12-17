@@ -259,11 +259,18 @@ require('lazy').setup({
         },
 
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        tsserver = {},
+        -- tsserver = {},
+        ts_ls = {},
         --
-        -- volar = {
-        --   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-        -- }, -- vue support
+        volar = {
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+        },
+        -- vuels = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -430,37 +437,38 @@ require('lazy').setup({
   {
     -- [[ ColorScheme ]]
     -- Already installed colorscheme `:Telescope colorscheme`.
-    'ellisonleao/gruvbox.nvim',
+    'eldritch-theme/eldritch.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    'zootedb0t/citruszest.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    -- [[ ColorScheme ]]
+    -- Already installed colorscheme `:Telescope colorscheme`.
+    'Shatur/neovim-ayu',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
-      require('gruvbox').setup {
-        terminal_colors = false, -- true, -- add neovim terminal colors
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = true,
-          emphasis = true,
-          comments = true,
-          operators = false,
-          folds = true,
-        },
-        strikethrough = true,
-        invert_selection = true,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = 'hard', -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = false, -- true,
-      }
-      vim.cmd.colorscheme 'gruvbox'
-      -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
+  },
+  {
+    'ellisonleao/gruvbox.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    'yorumicolors/yorumi.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    'cpea2506/one_monokai.nvim',
   },
 
   -- Highlight todo, notes, etc in comments
@@ -555,8 +563,8 @@ require('lazy').setup({
   --   config = function()
   --     require('supermaven-nvim').setup {
   --       keymaps = {
-  --         accept_selection = '<C-Tab>',
-  --         clear_suggestion = '<C-Space>>',
+  --         accept_selection = '<C-Space>',
+  --         clear_suggestion = '<C-Backspace>',
   --         accept_word = '<C-Enter>',
   --       },
   --     }
@@ -566,6 +574,13 @@ require('lazy').setup({
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
     dependencies = { 'nvim-lua/plenary.nvim' },
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   },
 }, {
   ui = {
