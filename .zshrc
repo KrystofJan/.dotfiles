@@ -67,4 +67,9 @@ bindkey '^F' fzf-file-widget
 # Created by `pipx` on 2024-05-21 05:43:57
 export PATH="$PATH:/home/zahry/.local/share/"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 eval "$(starship init zsh)"
