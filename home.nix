@@ -34,6 +34,8 @@
     cowsay
     lazygit
     starship
+        
+    xclip
   ];
 
   programs.zsh = {
@@ -41,19 +43,19 @@
   };
 
 
-  home.activation.addShellToEtcShells = lib.mkAfter ''
-    if ! grep -qx "${pkgs.zsh}/bin/zsh" /etc/shells; then
-      echo "Adding ${pkgs.zsh}/bin/zsh to /etc/shells"
-      echo ${pkgs.zsh}/bin/zsh | sudo tee -a /etc/shells
-    fi
-  '';
-
-  home.activation.setShell = lib.mkAfter ''
-    if [ "$(getent passwd $USER | cut -d: -f7)" != "${pkgs.zsh}/bin/zsh" ]; then
-      echo "Changing default shell to Zsh for user $USER"
-      chsh -s ${pkgs.zsh}/bin/zsh
-    fi
-  '';
+  # home.activation.addShellToEtcShells = lib.mkAfter ''
+  #   if ! grep -qx "${pkgs.zsh}/bin/zsh" /etc/shells; then
+  #     echo "Adding ${pkgs.zsh}/bin/zsh to /etc/shells"
+  #     echo ${pkgs.zsh}/bin/zsh | sudo tee -a /etc/shells
+  #   fi
+  # '';
+  #
+  # home.activation.setShell = lib.mkAfter ''
+  #   if [ "$(getent passwd $USER | cut -d: -f7)" != "${pkgs.zsh}/bin/zsh" ]; then
+  #     echo "Changing default shell to Zsh for user $USER"
+  #     chsh -s ${pkgs.zsh}/bin/zsh
+  #   fi
+  # '';
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

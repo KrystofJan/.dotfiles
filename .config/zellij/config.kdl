@@ -283,7 +283,23 @@ pane_frames false
 // Default: default
 //
 // TODO
-theme "kanagawa"
+
+themes {
+    slavana {
+        fg "#D8DEE9"
+        bg "#3B4252"
+        black "#0f111a"
+        red "#BF616A"
+        green "#A3BE8C"
+        yellow "#EBCB8B"
+        blue "#81A1C1"
+        magenta "#B48EAD"
+        cyan "#88C0D0"
+        white "#E5E9F0"
+        orange "#00e5e5"
+    }
+}
+theme "slavana"
 
 // The name of the default layout to load on startup
 // Default: "default"
