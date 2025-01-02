@@ -57,6 +57,8 @@ eval "$(atuin init zsh)"
 
 alias lg="lazygit"
 
+alias y="yazi"
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 alias zl="zellij -l compact"
