@@ -59,6 +59,8 @@ alias lg="lazygit"
 
 alias y="yazi"
 
+alias ll="ls -la"
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 alias zl="zellij -l compact"

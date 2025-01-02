@@ -2,7 +2,7 @@
 -- See `:help vim.opt`
 --  For more options, you can see `:help option-list`
 
-vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+vim.opt.shiftwidth = 4 -- Number of spaces inserted when indenting
 
 vim.opt.guifont = { 'JetBrains_Mono', 'h12' }
 
@@ -63,10 +63,3 @@ vim.opt.guicursor = 'i:block'
 vim.opt.scrolloff = 10
 
 vim.opt.colorcolumn = '80,120'
-
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = '*.feature',
-  callback = function()
-    vim.opt_local.shiftwidth = 2
-  end,
-})
