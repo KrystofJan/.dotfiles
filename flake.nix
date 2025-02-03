@@ -33,10 +33,6 @@
       modules = [./home.nix ./profiles/zahry.nix];
     };
 
-    homeConfigurations."zahry" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [./home.nix];
-    };
     devShell.${system} = pkgs.mkShell {
       packages = [
 	  pkgs.nixd
