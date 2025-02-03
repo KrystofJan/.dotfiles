@@ -7,11 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    alejandra.url = "github:kamadorueda/alejandra/3.1.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
+    alejandra,
     ...
   }: let
     system = "x86_64-linux";
@@ -22,7 +25,24 @@
     ];
     homeConfigurations."krystofjan" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
+      modules = [./home.nix ./profiles/krystofjan.nix];
+    };
+
+    homeConfigurations."zahry" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [./home.nix ./profiles/zahry.nix];
+    };
+
+    homeConfigurations."zahry" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
       modules = [./home.nix];
+    };
+    devShell.${system} = pkgs.mkShell {
+      packages = [
+	  pkgs.nixd
+	  alejandra.defaultPackage.${system}
+	  pkgs.lua-language-server
+      ];
     };
   };
 }

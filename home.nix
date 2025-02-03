@@ -4,14 +4,9 @@
   lib,
   ...
 }: {
-  home.username = "krystofjan";
-  home.homeDirectory = "/home/krystofjan";
-
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    neovim
-
     zellij
     fzf
     fd
@@ -27,6 +22,7 @@
     cowsay
     lazygit
     starship
+    ripgrep
 
     xclip
   ];
@@ -81,4 +77,45 @@
   };
 
   programs.home-manager.enable = true;
+
+
+	 programs.neovim = {
+	   enable = true;
+	   viAlias = true;
+	   vimAlias = true;
+
+	   plugins = with pkgs.vimPlugins; [
+	       comment-nvim
+	       friendly-snippets
+	       nvim-lspconfig
+	       gruvbox-nvim
+	       base16-nvim
+	       gitsigns-nvim
+	       lazygit-nvim
+	       which-key-nvim
+	       telescope-nvim
+	       telescope-fzf-native-nvim 
+	       plenary-nvim
+	       telescope-ui-select-nvim
+	       nvim-web-devicons
+	       fidget-nvim
+	       neodev-nvim
+	       conform-nvim
+	       nvim-cmp
+	       luasnip
+	       cmp_luasnip
+	       cmp-nvim-lsp
+	       cmp-path
+	       todo-comments-nvim
+	       mini-nvim
+	       nvim-treesitter.withAllGrammars
+	       lualine-nvim
+	       oil-nvim
+	       # harpoon
+	];
+
+	 };
+
+
+
 }
