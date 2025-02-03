@@ -74,7 +74,11 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -261,7 +265,6 @@ require('lazy').setup({
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
         -- tsserver = {},
         ts_ls = {},
-        cucumber_language_server = {},
         --
         volar = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },

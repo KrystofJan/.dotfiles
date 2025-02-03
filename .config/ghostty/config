@@ -6,7 +6,7 @@ font-thicken = true
 
 foreground=#D8DEE9
 background=#0f111a
-selection-foreground=#000000
+selection-foreground=#FFFACD
 selection-background=#FFFACD
 cursor-color=#81A1C1
 cursor-style=block
