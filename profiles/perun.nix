@@ -26,5 +26,7 @@ in
   home.file.".config/nvim/lua/zahry/init.lua".text = ''
     vim.opt.runtimepath:append("${treesitterParsers}")
   '';
+
+  # TODO: MANAGE HYPR
 }
 
