@@ -28,9 +28,14 @@
       modules = [./home.nix ./profiles/krystofjan.nix];
     };
 
-    homeConfigurations."zahry" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."veles" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [./home.nix ./profiles/zahry.nix];
+    };
+
+    homeConfigurations."perun" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [./home.nix ./profiles/perun.nix];
     };
 
     devShell.${system} = pkgs.mkShell {
