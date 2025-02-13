@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   # Define treesitterWithGrammars
   treesitterWithGrammars = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
 
@@ -9,8 +12,7 @@ let
     name = "treesitter-parsers";
     paths = treesitterWithGrammars.dependencies;
   };
-in
-{
+in {
   home.username = "zahry";
   home.homeDirectory = "/home/zahry";
 
@@ -27,4 +29,3 @@ in
     vim.opt.runtimepath:append("${treesitterParsers}")
   '';
 }
-

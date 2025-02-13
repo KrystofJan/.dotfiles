@@ -23,6 +23,7 @@
     packages.${system}.default = [
       pkgs.neovim
     ];
+
     homeConfigurations."krystofjan" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [./home.nix ./profiles/krystofjan.nix];
@@ -40,9 +41,9 @@
 
     devShell.${system} = pkgs.mkShell {
       packages = [
-	  pkgs.nixd
-	  alejandra.defaultPackage.${system}
-	  pkgs.lua-language-server
+        pkgs.nixd
+        alejandra.defaultPackage.${system}
+        pkgs.lua-language-server
       ];
     };
   };
