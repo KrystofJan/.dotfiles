@@ -16,7 +16,7 @@ local on_attach = function(_, bufnr)
   map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   map('K', vim.lsp.buf.hover, 'Hover Documentation')
   map('L', vim.lsp.buf.signature_help, 'Hover signature_help')
-  vim.keymap.set('i', '<leader>ll', vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'LSP: Hover signature_help' })
+  vim.keymap.set('i', '<C-l>', vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'LSP: Hover signature_help' })
 
   local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {

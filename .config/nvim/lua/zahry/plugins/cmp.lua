@@ -3,6 +3,8 @@ require('luasnip').setup()
 --require('friendly-snippets').setup();
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+
+-- luasnip.add_snippets('ts-test', require 'zahry.snippets.ts-test')
 require 'cmp_luasnip'
 require('cmp').setup {
   snippet = {
