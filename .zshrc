@@ -78,4 +78,4 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init zsh)"
 
-
+alias ccu="/nix/store/j4sap2ymqw4wwn2r8v3ynf4akxxfnyvw-ccu-0.1.0/bin/ccu"
