@@ -2,7 +2,7 @@
 keybinds {
     unbind "Ctrl h"
     normal {
-        unbind "Ctrl g" "Ctrl n" "Ctrl p" "Ctrl m" "Ctrl s" "Ctrl o" "Ctrl t" "Ctrl Q"
+        unbind "Ctrl g" "Ctrl n" "Ctrl p" "Ctrl m" "Ctrl s" "Ctrl o" "Ctrl t" "Ctrl Q" "Ctrl q"
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
@@ -149,7 +149,7 @@ keybinds {
     }
     shared_except "locked" {
         bind "Alt g" { SwitchToMode "Locked"; }
-        bind "Alt q" { Quit; }
+        bind "Alt Q" { Quit; }
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }
         bind "Alt o" { MoveTab "Right"; }
