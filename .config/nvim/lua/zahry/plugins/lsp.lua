@@ -235,6 +235,7 @@ return {
           },
         },
       },
+      texlab = {},
       -- vuels = {},
 
       lua_ls = {

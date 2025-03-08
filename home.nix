@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     zellij
+    tmux
     fzf
     fd
     thefuck
@@ -25,6 +26,8 @@
     starship
     ripgrep
     xclip
+    
+    zathura
   ];
 
   programs.zsh = {
