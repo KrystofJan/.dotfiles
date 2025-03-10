@@ -22,7 +22,7 @@ require('lazy').setup({
   require 'zahry.plugins.oil',
   require 'zahry.plugins.conform',
   require 'zahry.plugins.tree-sitter',
-
+  require 'zahry.plugins.undotree',
   -- require 'zahry.plugins.supermaven',
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
