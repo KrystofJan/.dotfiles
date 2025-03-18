@@ -2,12 +2,6 @@
 name = Jan-Krystof Zahradnik
 email = jendazah@gmail.com
 
-[includeIf "gitdir:./work/corellium/"]
-    path = .gitconfig-corellium
-
-[includeIf "gitdir:./work/"]
-    path = .gitconfig-profiq
-
 [rebase]
     updateRefs = true
 

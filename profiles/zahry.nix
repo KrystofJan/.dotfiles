@@ -25,7 +25,12 @@ in {
   };
 
   # Append the Treesitter parsers path to init.lua
-  home.file.".config/nvim/lua/zahry/init.lua".text = ''
-    vim.opt.runtimepath:append("${treesitterParsers}")
-  '';
+  home.file = {
+    # Append the Treesitter parsers path to init.lua
+    ".config/nvim/lua/zahry/init.lua".text = ''
+        vim.opt.runtimepath:append("${treesitterParsers}")
+    '';
+
+    ".gitconfig".source = ./../.gitconfig-personal;
+  };
 }

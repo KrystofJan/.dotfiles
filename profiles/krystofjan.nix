@@ -9,4 +9,8 @@
   home.packages = with pkgs; [
     neovim
   ];
+
+  home.file = {
+    ".gitconfig".source = ./../.gitconfig-work;
+  };
 }

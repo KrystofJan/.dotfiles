@@ -56,8 +56,7 @@
     ".config/ghostty".source = ./.config/ghostty;
     ".config/yazi".source = ./.config/yazi;
     ".config/lazygit".source = ./.config/lazygit;
-    ".gitconfig".source = ./.gitconfig;
-    ".gitconfig-profiq".source = ./.gitconfig-profiq;
+    ".gitconfig-base".source = ./.gitconfig-base;
     ".gitconfig-corellium".source = ./.gitconfig-corellium;
     "fzf-git.sh/fzf-git.sh".source = ./fzf-git.sh;
   };

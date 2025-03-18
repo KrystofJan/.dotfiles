@@ -35,6 +35,9 @@ in
     }
   '';
 
+    ".gitconfig".source = ./../.gitconfig-personal;
+  };
   # TODO: MANAGE HYPR
 }
+
 

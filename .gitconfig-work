@@ -1,0 +1,10 @@
+[user]
+name = Jan-Krystof Zahradnik
+email = jan.zahradnik@corellium.com
+
+[include]
+    path = .gitconfig-base
+
+[includeIf "gitdir:./work/corellium/"]
+    path = .gitconfig-corellium
+

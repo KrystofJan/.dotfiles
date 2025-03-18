@@ -1,0 +1,6 @@
+[user]
+name = Jan-Krystof Zahradnik
+email = jendazah@gmail.com
+
+[include]
+    path = .gitconfig-base
