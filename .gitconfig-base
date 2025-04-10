@@ -1,7 +1,3 @@
-[user]
-name = Jan-Krystof Zahradnik
-email = jendazah@gmail.com
-
 [rebase]
     updateRefs = true
 

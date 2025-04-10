@@ -1,6 +1,6 @@
 [user]
 name = Jan-Krystof Zahradnik
-email = jan.zahradnik@corellium.com
+email = jan.zahradnik@profiq.com
 
 [include]
     path = .gitconfig-base

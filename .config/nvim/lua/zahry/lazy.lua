@@ -24,6 +24,7 @@ require('lazy').setup({
   require 'zahry.plugins.tree-sitter',
   require 'zahry.plugins.undotree',
   require 'zahry.plugins.vimtex',
+  require 'zahry.plugins.debug',
 
   -- require 'zahry.plugins.supermaven',
   -- require 'kickstart.plugins.debug',
