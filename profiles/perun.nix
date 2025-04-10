@@ -14,6 +14,10 @@ in
   home.username = "zahry";
   home.homeDirectory = "/home/zahry";
 
+  home.packages = with pkgs; [
+    tree-sitter
+  ];
+
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
@@ -25,6 +29,10 @@ in
   # Append the Treesitter parsers path to init.lua
   home.file.".config/nvim/lua/zahry/init.lua".text = ''
     vim.opt.runtimepath:append("${treesitterParsers}")
+    require'nvim-treesitter.configs'.setup {
+      highlight = { enable = true },
+      indent = { enable = true },
+    }
   '';
 
   # TODO: MANAGE HYPR
