@@ -239,6 +239,19 @@ return {
       -- vuels = {},
 
       lua_ls = {},
+      cucumber_language_server = {
+        cmd = { 'cucumber-language-server', '--stdio' },
+        filetypes = { 'feature', 'gherkin', 'cucumber' },
+        root_dir = function(fname)
+          return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[0])
+        end,
+        settings = {
+          cucumber = {
+            features = { 'test/features/**/*.feature' },
+            glue = { 'test/steps/**/*.ts' },
+          },
+        },
+      },
     }
 
     --  other tools, you can run

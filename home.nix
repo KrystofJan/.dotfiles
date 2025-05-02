@@ -25,6 +25,7 @@
     delta
     starship
     ripgrep
+    igrep
     xclip
     
     zathura
