@@ -3,7 +3,21 @@
   pkgs,
   lib,
   ...
-}: {
+}: let 
+  kanagawaTheme = pkgs.fetchFromGitHub {
+    owner = "dangooddd";
+    repo = "kanagawa.yazi";
+    rev = "31167ed54c9cc935b2fa448d64d367b1e5a1105d"; # You can specify a specific commit/tag here
+    sha256 = "sha256-phwGd1i/n0mZH/7Ukf1FXwVgYRbXQEWlNRPCrmR5uNk="; # Leave empty first, Nix will tell you the correct hash
+  };
+  
+  onedarkTheme = pkgs.fetchFromGitHub {
+    owner = "BennyOe";
+    repo = "onedark.yazi";
+    rev = "668d71d967857392012684c7dd111605cfa36d1a";
+    sha256 = "sha256-tfkzVa+UdUVKF2DS1awEusfoJEjJh40Bx1cREPtewR0="; # Leave empty first, Nix will tell you the correct hash
+  };
+ in {
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
@@ -55,7 +69,6 @@
     ".config/alacritty".source = ./.config/alacritty;
     ".config/kitty".source = ./.config/kitty;
     ".config/ghostty".source = ./.config/ghostty;
-    ".config/yazi".source = ./.config/yazi;
     ".config/lazygit".source = ./.config/lazygit;
     ".gitconfig-base".source = ./.gitconfig-base;
     ".gitconfig-corellium".source = ./.gitconfig-corellium;
@@ -64,6 +77,28 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+  };
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+    theme = {
+      flavor = {
+	dark = "onedark";
+	light = "onedark";
+      };
+    };
+    settings = {
+      manager = {
+        show_hidden = true;
+        ratio = [ 1 2 5 ];
+      };
+    };
+
+    flavors = {
+       kanagawa = kanagawaTheme;
+       onedark = onedarkTheme;
+    };
   };
 
   programs.home-manager.enable = true;

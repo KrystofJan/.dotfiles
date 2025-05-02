@@ -40,6 +40,7 @@ alias cat="bat"
 
 # eza
 alias ls="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions"
+alias ll="eza --color=always --long --git --icons=always"
 
 # thefuck
 eval $(thefuck --alias)
@@ -58,8 +59,6 @@ eval "$(atuin init zsh)"
 alias lg="lazygit"
 
 alias y="yazi"
-
-alias ll="ls -la"
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
