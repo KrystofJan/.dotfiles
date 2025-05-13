@@ -26,6 +26,8 @@ require('lazy').setup({
   require 'zahry.plugins.vimtex',
   require 'zahry.plugins.debug',
   require 'zahry.plugins.augment',
+  require 'zahry.plugins.markdown',
+  { 'vuciv/golf' },
 
   -- require 'zahry.plugins.supermaven',
   -- require 'kickstart.plugins.debug',

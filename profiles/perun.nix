@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   # Define treesitterWithGrammars
   treesitterWithGrammars = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
 
@@ -9,8 +12,7 @@ let
     name = "treesitter-parsers";
     paths = treesitterWithGrammars.dependencies;
   };
-in
-{
+in {
   home.username = "zahry";
   home.homeDirectory = "/home/zahry";
 
@@ -27,17 +29,16 @@ in
   };
 
   # Append the Treesitter parsers path to init.lua
-  home.file.".config/nvim/lua/zahry/init.lua".text = ''
-    vim.opt.runtimepath:append("${treesitterParsers}")
-    require'nvim-treesitter.configs'.setup {
-      highlight = { enable = true },
-      indent = { enable = true },
-    }
-  '';
+  home.file = {
+    ".config/nvim/lua/zahry/init.lua".text = ''
+      vim.opt.runtimepath:append("${treesitterParsers}")
+      require'nvim-treesitter.configs'.setup {
+        highlight = { enable = true },
+        indent = { enable = true },
+      }
+    '';
 
     ".gitconfig".source = ./../.gitconfig-personal;
   };
   # TODO: MANAGE HYPR
 }
-
-
