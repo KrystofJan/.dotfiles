@@ -46,7 +46,7 @@ vim.on_key(function(char)
     resize_up()
   elseif char == 'j' then
     resize_down()
-  elseif char == 'q' or char == '<Esc>' then
+  elseif char == 'q' then --or char == '\r' then
     exit_resize_mode()
   end
 end, vim.api.nvim_create_namespace 'ResizeMode')

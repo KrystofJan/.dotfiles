@@ -16,6 +16,27 @@ return {
       inc_rename = false,
       lsp_doc_border = false,
     },
+    views = {
+      cmdline_popup = {
+        position = {
+          row = '50%',
+          col = '50%',
+        },
+        size = {
+          width = 60,
+          height = 'auto',
+        },
+        border = {
+          style = 'rounded',
+        },
+        win_options = {
+          winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
+        },
+      },
+    },
+    cmdline = {
+      view = 'cmdline_popup', -- Use the custom view defined above
+    },
   },
   dependencies = {
     'MunifTanjim/nui.nvim',
