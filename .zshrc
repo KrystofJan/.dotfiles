@@ -78,3 +78,4 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(starship init zsh)"
 
 alias ccu="~/work/corellium/cli-util/result/bin/ccu"
+export MANPAGER='nvim +Man!'
