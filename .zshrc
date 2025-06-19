@@ -58,8 +58,6 @@ eval "$(atuin init zsh)"
 
 alias lg="lazygit"
 
-alias y="yazi"
-
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 alias zl="zellij -l compact"
@@ -79,3 +77,12 @@ eval "$(starship init zsh)"
 
 alias ccu="~/work/corellium/cli-util/result/bin/ccu"
 export MANPAGER='nvim +Man!'
+
+# Some yazi stuff
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

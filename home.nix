@@ -93,6 +93,16 @@
         show_hidden = true;
         ratio = [ 1 2 5 ];
       };
+      open = {
+        run = ''
+          if [[ "$1" =~ \.(png|jpg|jpeg|webp|gif)$ ]]; then
+            open --block -- feh "$1"
+          else
+            open -- "$1"
+          fi
+        '';
+        desc = "Open files, using feh for images";
+      };
     };
 
     flavors = {

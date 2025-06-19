@@ -20,6 +20,9 @@ return {
           end,
         },
       },
+      config = function()
+        require('luasnip.loaders.from_lua').load { paths = '~/.config/nvim/lua/zahry/snippets/' }
+      end,
     },
     'saadparwaiz1/cmp_luasnip',
     -- Adds other completion capabilities.
