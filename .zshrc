@@ -42,10 +42,6 @@ alias cat="bat"
 alias ls="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions"
 alias ll="eza --color=always --long --git --icons=always"
 
-# thefuck
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
-
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 alias cd="z"
@@ -60,7 +56,7 @@ alias lg="lazygit"
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-alias zl="zellij -l compact"
+alias zl="zellij"
 
 bindkey -r '^T'
 bindkey '^F' fzf-file-widget
@@ -76,6 +72,9 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(starship init zsh)"
 
 alias ccu="~/work/corellium/cli-util/result/bin/ccu"
+alias c=clear
+alias v=nvim
+
 export MANPAGER='nvim +Man!'
 
 # Some yazi stuff
@@ -86,3 +85,5 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+export LC_TIME=en_US.UTF-8

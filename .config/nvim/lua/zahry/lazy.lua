@@ -27,7 +27,7 @@ require('lazy').setup({
   require 'zahry.plugins.debug',
   require 'zahry.plugins.augment',
   require 'zahry.plugins.markdown',
-  -- require 'zahry.plugins.hardtime',
+  require 'zahry.plugins.hardtime',
   -- require 'zahry.plugins.notifications',
   { 'vuciv/golf' },
 

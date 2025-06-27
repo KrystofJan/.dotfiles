@@ -25,7 +25,7 @@
     tmux
     fzf
     fd
-    thefuck
+	# thefuck
     zoxide
     atuin
     eza
@@ -64,6 +64,7 @@
 
   home.file = {
     ".zshrc".source = ./.zshrc;
+    "./.config/starship.toml".source = ./.config/starship.toml;
     ".config/nvim".source = ./.config/nvim;
     ".config/zellij".source = ./.config/zellij;
     ".config/alacritty".source = ./.config/alacritty;
@@ -89,9 +90,9 @@
       };
     };
     settings = {
-      manager = {
+      mgr = {
         show_hidden = true;
-        ratio = [ 1 2 5 ];
+        ratio = [ 1 3 4 ];
       };
       open = {
         run = ''

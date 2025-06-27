@@ -1,0 +1,48 @@
+layout {
+  tab name="ui-test" {
+    pane {
+	focus true
+	cwd "~/work/corellium/ui-test" 
+	command "nix"
+	args "develop" "../../../dev-flakes/corellium-flake"
+    }
+    pane {
+	split_direction "horizontal"
+	cwd "~/work/corellium/ui-test" 
+	command "nix"
+	args "develop" "../../../dev-flakes/corellium-flake"
+    }
+  }
+
+  tab name="frontend" {
+    pane {
+	cwd "~/work/corellium/frontend" 
+	command "nix"
+	args "develop" "../../../dev-flakes/corellium-flake#frontend"
+    }
+  }
+
+  tab name="metal" {
+
+    pane {
+	cwd "~/work/corellium/droidworks/libraries/design-system" 
+	command "nix"
+	args "develop" "../../../dev-flakes/corellium-flake#frontend"
+    }
+  }
+
+  tab name="client-api" {
+    pane {
+	cwd "~/work/corellium/client-api-test/" 
+	command "nix"
+	args "develop" "../../../dev-flakes/corellium-flake"
+    }
+  }
+
+  default_tab_template {
+    children
+    pane size=1 borderless=true {
+	plugin location="zellij:tab-bar"
+    }
+    }
+}
