@@ -31,6 +31,10 @@ require('lazy').setup({
   -- require 'zahry.plugins.notifications',
   { 'vuciv/golf' },
 
+  -- {
+  --   dir = '~/.dotfiles/colors/blu'
+  -- },
+
   -- require 'zahry.plugins.supermaven',
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
