@@ -21,28 +21,27 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    zellij
-    tmux
-    fzf
-    fd
-	# thefuck
-    zoxide
+    act
     atuin
-    eza
     bat
     btop
-    neofetch
-    yazi
-    act
     cowsay
-    lazygit
     delta
-    starship
-    ripgrep
+    eza
+    fd
+    fzf
     igrep
+    lazygit
+    neofetch
+    ripgrep
+    starship
+    tmux
+    watson
     xclip
-    
+    yazi
     zathura
+    zellij
+    zoxide
   ];
 
   programs.zsh = {

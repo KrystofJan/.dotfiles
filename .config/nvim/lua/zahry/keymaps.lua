@@ -31,3 +31,19 @@ vim.keymap.set('n', '<leader>cp', function()
   vim.fn.setreg('+', vim.fn.expand '%:p')
   print('Copied: ' .. vim.fn.expand '%:p')
 end, { desc = 'Copy file path to clipboard' })
+
+function restartLsp()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local clients = vim.lsp.get_clients({ 
+     bufnr = bufnr, 
+   }) 
+  for _, client in ipairs(clients) do
+    if client and client.name then
+      vim.lsp.enable(client.name, false)
+      vim.lsp.enable(client.name, true)
+      print(client.name .. ' was restarted')
+    end
+  end
+end
+
+vim.keymap.set('n', '<leader>lr', restartLsp , { desc = 'Go to previous [D]iagnostic message' })

@@ -41,6 +41,7 @@ return {
       vue = { 'prettierd', 'prettier', stop_after_first = true },
       nix = { 'alejandra' },
       rust = { 'rustfmt' },
+      go = { 'gofmt', 'goimports' },
     },
   },
 }
