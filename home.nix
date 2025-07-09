@@ -27,6 +27,7 @@
     btop
     cowsay
     delta
+    dysk
     eza
     fd
     fzf
