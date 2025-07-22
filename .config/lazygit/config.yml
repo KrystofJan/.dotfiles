@@ -1,7 +1,15 @@
 gui:
-  sidePanelWidth: 0.2 #
+  sidePanelWidth: 0.3
 
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+  allowEmptyCommits: true
+
+customCommands:
+  - key: 'E'
+    description: 'Add empty commit'
+    context: 'commits'
+    command: 'git commit --allow-empty -m "empty commit"'
+    loadingText: 'Committing empty commit...'

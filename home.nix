@@ -31,6 +31,7 @@
     eza
     fd
     fzf
+    gemini-cli
     igrep
     lazygit
     neofetch
