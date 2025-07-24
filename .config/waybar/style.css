@@ -1,16 +1,30 @@
 * {
   font-family: "Martian Mono", "Font Awesome 6 Free",
     "Font Awesome 6 Brands", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 window#waybar {
-  background-color: rgba(15, 17, 26, 1);
-  
+  /* background: #080C10;  */
+
+  background: rgba(255, 255, 255, 0); 
   color: rgba(255, 255, 255, 1);
-  transition-property: background-color;
-  transition-duration: 0.5s;
 }
+
+.modules-left, .modules-right, .modules-center {
+    padding: 2px;
+    background: #101920;
+    border-radius: 0 0 12px 12px;
+}
+
+.modules-left {
+    border-radius: 0 0 12px 0 ;
+}
+
+.modules-right {
+    border-radius: 0 0 0 12px;
+}
+
 
 #end-right-module,
 #cpu,
@@ -21,6 +35,7 @@ window#waybar {
 #wireplumber,
 #pulseaudio,
 #custom-media,
+#clock,
 #mode,
 #idle_inhibitor,
 #scratchpad,
@@ -39,47 +54,33 @@ window#waybar {
 
 #workspaces {
   color: rgba(255, 255, 255, 1);
-    padding: 4px;
   transition: all 0.4s ease-out;
 }
 
 #workspaces button {
-  border-radius: 20px;
-  color: rgba(41, 238, 223, 1);
+  color: #fff;
   transition: all 0.4s ease-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
 }
 
 #workspaces button.active {
-  background-color: rgba(42, 255, 152, 0.4);
-  color: rgba(255, 138, 123, 1);
+  border-bottom: 1px solid #89C7DA;
+  border-radius: 0;
 }
 
-#workspaces button.urgent {
-  color: rgba(255, 138, 123, 1);
-  font-weight: 800;
-  animation-name: blink-workspace;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+#workspaces button:hover {
+  color: rgba(41, 238, 223, 1);
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 
 #workspaces button.empty {
   color: rgba(41, 238, 223, 1);
-  animation-name: blink-workspace;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: 4;
-  animation-direction: alternate;
 }
 
-#workspaces button.occupied {
-  background-color: rgba(203, 75, 22, 0.7);
-}
 #window {
   margin: 0px 4px;
 }
-
 
 
 #pulseaudio {
@@ -101,10 +102,6 @@ window#waybar {
 
 #custom-media.custom-vlc {
   border: 0.19em solid rgba(255, 160, 0, 1);
-}
-
-#clock {
-  padding: 0px 4px 0px 0px;
 }
 
 #backlight {

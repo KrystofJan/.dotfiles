@@ -3,21 +3,21 @@
   pkgs,
   lib,
   ...
-}: let 
+}: let
   kanagawaTheme = pkgs.fetchFromGitHub {
     owner = "dangooddd";
     repo = "kanagawa.yazi";
     rev = "31167ed54c9cc935b2fa448d64d367b1e5a1105d"; # You can specify a specific commit/tag here
     sha256 = "sha256-phwGd1i/n0mZH/7Ukf1FXwVgYRbXQEWlNRPCrmR5uNk="; # Leave empty first, Nix will tell you the correct hash
   };
-  
+
   onedarkTheme = pkgs.fetchFromGitHub {
     owner = "BennyOe";
     repo = "onedark.yazi";
     rev = "668d71d967857392012684c7dd111605cfa36d1a";
     sha256 = "sha256-tfkzVa+UdUVKF2DS1awEusfoJEjJh40Bx1cREPtewR0="; # Leave empty first, Nix will tell you the correct hash
   };
- in {
+in {
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
@@ -30,6 +30,7 @@
     dysk
     eza
     fd
+    feh
     fzf
     gemini-cli
     igrep
@@ -86,14 +87,14 @@
     enableZshIntegration = true;
     theme = {
       flavor = {
-	dark = "onedark";
-	light = "onedark";
+        dark = "onedark";
+        light = "onedark";
       };
     };
     settings = {
       mgr = {
         show_hidden = true;
-        ratio = [ 1 3 4 ];
+        ratio = [1 3 4];
       };
       open = {
         run = ''
@@ -108,8 +109,8 @@
     };
 
     flavors = {
-       kanagawa = kanagawaTheme;
-       onedark = onedarkTheme;
+      kanagawa = kanagawaTheme;
+      onedark = onedarkTheme;
     };
   };
 
