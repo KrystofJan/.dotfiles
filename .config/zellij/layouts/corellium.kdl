@@ -38,6 +38,14 @@ layout {
     }
   }
 
+  tab name="nightlys" {
+    pane {
+      cwd "~/work/corellium/nightlys/" 
+      command "nix"
+      args "develop" "../../../dev-flakes/corellium-flake#nightlys"
+    }
+  }
+
   default_tab_template {
     children
     pane size=1 borderless=true {
