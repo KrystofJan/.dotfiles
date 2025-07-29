@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-palette = 'blu'
+palette = 'oldworld'
 add_newline = true
 
 # Custom format to show username@hostname before directory
@@ -113,6 +113,20 @@ color_purple = '#a58caa'
 color_red = '#a14e3e'
 color_yellow = '#cbb86c'
 
+[palettes.oldworld]
+color_fg0 = '#c9c7cd'
+color_bg1 = '#161617'
+color_bg3 = '#27272a'
+color_blue = '#9ca2cf'
+color_aqua = '#85b5ba'
+color_green = '#90b99f'
+color_purple = '#e29eca'
+color_red = '#ea83a5'
+color_yellow = '#e6b99d'
+color_orange = '#e6b99d'
+color_white = '#c9c7cd'
+color_gray = '#27272a'
+
 [palettes.blu]
 color_fg0 = '#dce3e8'
 color_bg1 = '#101920'
@@ -212,10 +226,10 @@ symbol = " "
 ssh_symbol = " "
 ssh_only = false
 format = "[@](bold color_green)[$hostname]($style)[\\]](color_red) [➜](color_yellow) "
-style = "bold color_blue_light"
+style = "bold color_aqua"
 
 [username]
-style_user = "bold color_cyan"
+style_user = "bold color_blue"
 style_root = "bold color_red"
 format = "[\\[](color_red)[$user]($style)"
 show_always = true

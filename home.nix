@@ -39,6 +39,7 @@ in {
     ripgrep
     starship
     tmux
+    vscode-json-languageserver
     watson
     xclip
     yazi

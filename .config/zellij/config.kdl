@@ -264,7 +264,7 @@ auto_layout true
 // Once these themes are defined, one of them should to be selected in the "theme" section of this file
 
 default_layout "corellium"
-theme "slavana"
+theme "oldworld"
 
 // Configure the scroll back buffer size
 // This is the number of lines zellij stores for each pane in the scroll back

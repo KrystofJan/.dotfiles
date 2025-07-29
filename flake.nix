@@ -44,6 +44,7 @@
         pkgs.nixd
         alejandra.defaultPackage.${system}
         pkgs.lua-language-server
+        pkgs.delta
       ];
     };
   };
