@@ -35,6 +35,7 @@ in {
     fzf
     gemini-cli
     igrep
+    lazydocker
     lazygit
     neofetch
     ripgrep

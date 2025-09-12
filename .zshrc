@@ -53,6 +53,7 @@ source ~/fzf-git.sh/fzf-git.sh
 eval "$(atuin init zsh)"
 
 alias lg="lazygit"
+alias ldoc="lazydocker"
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
