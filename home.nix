@@ -48,6 +48,9 @@ in {
     zathura
     zellij
     zoxide
+
+    nixd
+    bash-language-server
   ];
 
   programs.zsh = {
