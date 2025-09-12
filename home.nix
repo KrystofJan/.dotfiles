@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  auggie,
   ...
 }: let
   kanagawaTheme = pkgs.fetchFromGitHub {
@@ -19,6 +20,9 @@
   };
 in {
   home.stateVersion = "24.11";
+
+  # Enable auggie for all profiles
+  programs.auggie.enable = true;
 
   home.packages = with pkgs; [
     act
