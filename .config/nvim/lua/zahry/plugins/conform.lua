@@ -32,6 +32,14 @@ return {
         lsp_format = 'fallback', -- or "always" if you prefer
       }
     end,
+    formatters = {
+      odinfmt = {
+        -- Change where to find the command if it isn't in your path.
+        command = "odinfmt",
+        args = { "-stdin" },
+        stdin = true,
+      },
+    },
     formatters_by_ft = {
       lua = { 'stylua' },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
@@ -42,6 +50,8 @@ return {
       nix = { 'alejandra' },
       rust = { 'rustfmt' },
       go = { 'gofmt', 'goimports' },
+      odin = { "odinfmt" },
+      zig = { "zigfmt" },
     },
   },
 }

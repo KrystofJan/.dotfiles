@@ -31,6 +31,7 @@ in {
     eza
     fd
     feh
+    figlet
     fzf
     gemini-cli
     igrep

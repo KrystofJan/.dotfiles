@@ -15,6 +15,9 @@ return {
       cssls = 'vscode-css-language-server',
       jsonls = 'vscode-json-language-server',
       bashls = 'bash-language-server',
+      ols = 'ols',
+      nixd = 'nixd',
+      zls = 'zls',
     }
 
     local on_attach = function(client, bufnr)
