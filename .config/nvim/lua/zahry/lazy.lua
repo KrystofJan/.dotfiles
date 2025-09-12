@@ -18,7 +18,6 @@ require('lazy').setup({
   require 'zahry.plugins.lazygit',
   require 'zahry.plugins.whichkey',
   require 'zahry.plugins.autopairs',
-  require 'zahry.plugins.harpoon',
   require 'zahry.plugins.oil',
   require 'zahry.plugins.conform',
   require 'zahry.plugins.tree-sitter',
