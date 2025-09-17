@@ -18,6 +18,7 @@ return {
       ols = 'ols',
       nixd = 'nixd',
       zls = 'zls',
+      tailwindcss = 'tailwindcss-language-server'
     }
 
     local on_attach = function(client, bufnr)

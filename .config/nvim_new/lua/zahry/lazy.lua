@@ -36,12 +36,6 @@ require('lazy').setup({
   -- },
 
   -- require 'zahry.plugins.supermaven',
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns',
-  -- { import = 'custom.plugins' },
 }, {
   lockfile = vim.fn.stdpath 'data' .. '/lazy-lock.json',
   ui = {

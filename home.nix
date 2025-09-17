@@ -52,6 +52,8 @@ in {
     zathura
     zellij
     zoxide
+    glab
+    gh
 
     nixd
     bash-language-server
