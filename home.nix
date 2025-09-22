@@ -18,6 +18,13 @@
     rev = "668d71d967857392012684c7dd111605cfa36d1a";
     sha256 = "sha256-tfkzVa+UdUVKF2DS1awEusfoJEjJh40Bx1cREPtewR0="; # Leave empty first, Nix will tell you the correct hash
   };
+
+  tpm = pkgs.fetchFromGitHub {
+    owner = "tmux-plugins";
+    repo = "tpm";
+    rev = "99469c4a9b1ccf77fade25842dc7bafbc8ce9946";
+    sha256 = "sha256-hW8mfwB8F9ZkTQ72WQp/1fy8KL1IIYMZBtZYIwZdMQc=";
+  };
 in {
   home.stateVersion = "24.11";
 
@@ -95,6 +102,7 @@ in {
     ".gitconfig-base".source = ./.gitconfig-base;
     ".gitconfig-corellium".source = ./.gitconfig-corellium;
     "fzf-git.sh/fzf-git.sh".source = ./fzf-git.sh;
+    ".tmux/plugins/tpm".source = tpm;
   };
 
   home.sessionVariables = {
