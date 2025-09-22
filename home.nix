@@ -24,7 +24,13 @@ in {
   # Enable auggie for all profiles
   programs.auggie.enable = true;
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+             "aseprite"
+           ];
+
   home.packages = with pkgs; [
+    aseprite
+
     act
     atuin
     bat
@@ -85,6 +91,7 @@ in {
     ".config/kitty".source = ./.config/kitty;
     ".config/ghostty".source = ./.config/ghostty;
     ".config/lazygit".source = ./.config/lazygit;
+    ".config/tmux".source = ./.config/tmux;
     ".gitconfig-base".source = ./.gitconfig-base;
     ".gitconfig-corellium".source = ./.gitconfig-corellium;
     "fzf-git.sh/fzf-git.sh".source = ./fzf-git.sh;
