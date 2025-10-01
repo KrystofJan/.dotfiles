@@ -14,7 +14,7 @@ return {
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
   },
   config = function()
     -- Two important keymaps to use while in Telescope are:
@@ -26,11 +26,10 @@ return {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
-      -- defaults = {
-      --   mappings = {
-      --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      --   },
-      -- },
+      defaults = {
+        layout_strategy = 'vertical',
+        layout_config = { width = 0.60 },
+      },
       pickers = {
         find_files = {
           hidden = true,
