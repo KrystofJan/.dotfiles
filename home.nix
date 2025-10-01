@@ -24,13 +24,7 @@ in {
   # Enable auggie for all profiles
   programs.auggie.enable = true;
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-             "aseprite"
-           ];
-
   home.packages = with pkgs; [
-    aseprite
-
     act
     atuin
     bat
@@ -44,7 +38,10 @@ in {
     figlet
     fzf
     gemini-cli
+    gh
+    glab
     igrep
+    jq
     lazydocker
     lazygit
     neofetch
@@ -57,21 +54,21 @@ in {
     zathura
     zellij
     zoxide
-    glab
-    gh
 
     nixd
     bash-language-server
   ];
 
+  # Configure tmux through Home Manager with Nix-managed plugins
   programs.tmux = {
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
       sensible
       yank
+      vim-tmux-navigator
     ];
+    # Source our custom configuration file
     extraConfig = ''
-      # Source the existing tmux configuration
       source-file ~/.config/tmux/tmux.conf
     '';
   };

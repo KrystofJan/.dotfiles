@@ -16,6 +16,15 @@ in {
   home.username = "zahry";
   home.homeDirectory = "/home/zahry";
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "aseprite"
+    ];
+
+  home.packages = with pkgs; [
+    aseprite
+  ];
+
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
