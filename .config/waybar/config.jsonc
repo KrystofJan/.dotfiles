@@ -2,7 +2,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
+    "height": 16, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 16, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -44,32 +44,7 @@
     },
     "hyprland/window": {
         "format": "{}",
-        "rewrite": {
-            "(.*) — Mozilla Firefox": "🌐Mozilla Firefox",
-            "(.*)Zellij(.*)-(.*)": "👾 Zellij - $2 ",
-            ".*Spotify.*": "♬ Spotify ",
-            ".*Discord.*": "🗨️ Discord",
-            ".*Obsidian.*": "📝 Obsidian",
-            ".*Alacritty.*": "",
-        },
     },
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -204,7 +179,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}  {format_source}",
+        "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",

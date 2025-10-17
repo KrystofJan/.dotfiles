@@ -3,13 +3,12 @@
 
 hyprlock
 
-swww init &
+swww-daemon &
 
 # swww img ~/Wallpapers/gruv-wallpaper.png &
 # swww img ~/Wallpapers/wizard.jpg &
-swww img ~/Downloads/fantasy-portal-moewalls-com.gif &
-swww img ~/Wallpapers/bg.gif --transition-type=center &
-
+# swww img ~/Downloads/fantasy-portal-moewalls-com.gif &
+swww img ~/Wallpapers/planet.gif --transition-type=center &
 
 nm-applet --indicator &
 

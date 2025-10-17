@@ -40,5 +40,27 @@ in {
 
     ".gitconfig".source = ./../.gitconfig-personal;
   };
+
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+    tray = "auto";
+    settings = {
+      program_options = {
+        file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
+        udisks_version = 2;
+      };
+      mount_options = {
+        "*" = [
+          "noatime"
+          "uid=1000"
+          "gid=100"
+          "umask=022"
+        ];
+      };
+    };
+  };
+
   # TODO: MANAGE HYPR
 }
