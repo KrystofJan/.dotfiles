@@ -1,0 +1,6 @@
+#!/bin/bash
+
+WANTED_SESSIONS=$("ui-test" "dotfiles" "student-pool" "corellium-rest")
+
+CURRENT_SESSIONS=$(tmux ls -F '#S')
+echo $CURRENT_SESSIONS

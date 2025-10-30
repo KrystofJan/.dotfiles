@@ -17,9 +17,9 @@ return {
       local disable_filetypes = {
         c = true,
         cpp = true,
-        feature = true,
-        cucumber = true,
-        gherkin = true,
+        -- feature = true,
+        -- cucumber = true,
+        -- gherkin = true,
       }
 
       local ft = vim.bo[bufnr].filetype
@@ -52,6 +52,7 @@ return {
       go = { 'gofmt', 'goimports' },
       odin = { "odinfmt" },
       zig = { "zigfmt" },
+      feature = {"gherkin-formatter"}
     },
-  },
+  },conform
 }

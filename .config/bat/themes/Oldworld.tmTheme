@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>Oldworld (bat)</string>
+  <key>uuid</key>
+  <string>OLDWORLD-BAT-0001-0000-0000-000000000001</string>
+
+  <key>settings</key>
+  <array>
+    <!-- base / default text -->
+    <dict>
+      <key>settings</key>
+      <dict>
+        <key>background</key><string>#1E1E2E</string>  <!-- dark background -->
+        <key>foreground</key><string>#CAD3F5</string>  <!-- light grey-blue -->
+      </dict>
+    </dict>
+
+    <!-- comments -->
+    <dict>
+      <key>scope</key><string>comment, punctuation.definition.comment</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#6E6C7E</string>
+        <key>fontStyle</key><string>italic</string>
+      </dict>
+    </dict>
+
+    <!-- keywords -->
+    <dict>
+      <key>scope</key><string>keyword, storage.type</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#F38BA8</string>  <!-- soft pink/coral -->
+      </dict>
+    </dict>
+
+    <!-- functions -->
+    <dict>
+      <key>scope</key><string>entity.name.function, support.function</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#89B4FA</string>  <!-- sky-blue -->
+      </dict>
+    </dict>
+
+    <!-- variables / identifiers -->
+    <dict>
+      <key>scope</key><string>variable, identifier</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#C3BAC6</string>  <!-- muted lavender/grey -->
+      </dict>
+    </dict>
+
+    <!-- strings -->
+    <dict>
+      <key>scope</key><string>string, constant.other.symbol</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#A6E3A1</string>  <!-- pale green -->
+      </dict>
+    </dict>
+
+    <!-- numbers / constants -->
+    <dict>
+      <key>scope</key><string>constant.numeric, constant.language.boolean</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#F9E2AF</string>  <!-- light sand -->
+      </dict>
+    </dict>
+
+    <!-- types / classes -->
+    <dict>
+      <key>scope</key><string>entity.name.type, support.type</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#F5C2E7</string>  <!-- light pink/purple -->
+      </dict>
+    </dict>
+
+    <!-- operators / punctuation -->
+    <dict>
+      <key>scope</key><string>keyword.operator, punctuation.separator</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#D9E0EE</string>  <!-- light greyish -->
+      </dict>
+    </dict>
+
+    <!-- errors / invalid -->
+    <dict>
+      <key>scope</key><string>invalid, invalid.illegal, markup.error</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#F38BA8</string>
+        <key>fontStyle</key><string>underline</string>
+      </dict>
+    </dict>
+
+    <!-- warnings -->
+    <dict>
+      <key>scope</key><string>markup.warning, constant.other</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FAB387</string>  <!-- peachy warning colour -->
+      </dict>
+    </dict>
+
+    <!-- Git change markers / diff (bat shows changes) -->
+    <dict>
+      <key>scope</key><string>markup.changed, markup.deleted</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#F38BA8</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>scope</key><string>markup.inserted</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#A6E3A1</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>

@@ -27,7 +27,6 @@ in {
   home.packages = with pkgs; [
     act
     atuin
-    bat
     btop
     cowsay
     delta
@@ -94,6 +93,7 @@ in {
     ".zshrc".source = ./.zshrc;
     "./.config/starship.toml".source = ./.config/starship.toml;
     ".config/nvim".source = ./.config/nvim;
+    ".config/bat".source = ./.config/bat;
     ".config/zellij".source = ./.config/zellij;
     ".config/alacritty".source = ./.config/alacritty;
     ".config/kitty".source = ./.config/kitty;
@@ -111,6 +111,13 @@ in {
     HYPRCURSOR_SIZE = "24";
     XCURSOR_THEME = "rose-pine-hyprcursor";
     XCURSOR_SIZE = "24";
+  };
+
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "Oldworld";
+    };
   };
 
   programs.yazi = {

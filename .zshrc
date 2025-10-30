@@ -34,7 +34,7 @@ _fzf_compgen_dir() {
 
 
 # bat
-export BAT_THEME=gruvbox-dark
+export BAT_THEME="Oldworld"
 alias cat="bat"
 
 
