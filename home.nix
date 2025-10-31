@@ -87,10 +87,10 @@ in {
         };
       }
     ];
+    initExtra = builtins.readFile ./.zshrc;
   };
 
   home.file = {
-    ".zshrc".source = ./.zshrc;
     "./.config/starship.toml".source = ./.config/starship.toml;
     ".config/nvim".source = ./.config/nvim;
     ".config/bat".source = ./.config/bat;
