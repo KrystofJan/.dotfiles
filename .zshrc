@@ -97,3 +97,7 @@ function y() {
 export LC_TIME=en_US.UTF-8
 
 echo "$HOST" | figlet -f ~/.dotfiles/Bloody.flf -w $(tput cols) -c
+
+sesh() {
+  "$HOME/.dotfiles/tmux-sessionizer" "$1"
+}

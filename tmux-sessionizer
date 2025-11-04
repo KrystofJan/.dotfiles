@@ -1,6 +1,48 @@
 #!/bin/bash
+DEFINED_SESSIONS=("ui-test" "dotfiles" "student-pool" "corellium-rest")
 
-WANTED_SESSIONS=$("ui-test" "dotfiles" "student-pool" "corellium-rest")
+declare -A SESSION_DIRECTORY_MAP=(
+  ["ui-test"]="$HOME/work/corellium/ui-test"
+  ["dotfiles"]="$HOME/.dotfiles"
+  ["student-pool"]="$HOME/work/profiq/student-pool/breakfast-bot"
+  ["corellium-rest"]="$HOME/work/corellium"
+)
 
-CURRENT_SESSIONS=$(tmux ls -F '#S')
-echo $CURRENT_SESSIONS
+DESIRED_SESSION="$(printf '%s\n' "${DEFINED_SESSIONS[@]}" | rofi -dmenu -p "Choose an option")"
+
+if ! printf '%s\n' "${DEFINED_SESSIONS[@]}" | grep -Fxqs -- "$DESIRED_SESSION"; then
+  echo "Session undefined: $DESIRED_SESSION"
+  exit 1
+fi
+
+SESSION_DIR=${SESSION_DIRECTORY_MAP[$DESIRED_SESSION]:-$HOME}
+
+if tmux has-session -t "$DESIRED_SESSION" 2>/dev/null; then
+  echo "Session already running → $DESIRED_SESSION"
+else
+  echo "Creating session → $DESIRED_SESSION in $SESSION_DIR"
+  tmux new-session -ds "$DESIRED_SESSION" -c "$SESSION_DIR"
+fi
+
+if [ "${TMUX-}" ]; then
+  exec tmux switch-client -t "$DESIRED_SESSION"
+fi
+
+client_tty="$(
+  tmux list-clients -F '#{client_tty} #{client_termname}' |
+  awk '$2 ~ /^(st|xterm-ghostty)$/ { print $1; exit }'
+)"
+
+if [ -n "${client_tty}" ]; then
+  tmux switch-client -c "${client_tty}" -t "$DESIRED_SESSION"
+  exit 0
+fi
+
+TMUX_BIN="$(command -v tmux || true)"
+if [ -z "$TMUX_BIN" ]; then
+  echo "tmux not found in PATH for this script. Current PATH: $PATH"
+  exit 127
+fi
+
+exec ghostty -e "$TMUX_BIN" attach-session -t "$DESIRED_SESSION"
+
