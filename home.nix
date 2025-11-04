@@ -52,6 +52,7 @@ in {
     yazi
     zathura
     zoxide
+    bc
 
     nixd
     bash-language-server
