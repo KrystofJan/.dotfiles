@@ -1,5 +1,7 @@
 gui:
   sidePanelWidth: 0.3
+  showFileIcons: true
+  nerdFontsVersion: "3"
 
 git:
   paging:
