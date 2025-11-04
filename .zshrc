@@ -32,6 +32,13 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
+# DISPLAY ENV VARIABLES
+fzf_env() {
+  env | fzf
+}
+
+zle -N fzf_env
+bindkey '^E' fzf_env
 
 # bat
 export BAT_THEME="Oldworld"
