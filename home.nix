@@ -133,6 +133,10 @@ in {
         show_hidden = true;
         ratio = [1 3 4];
       };
+      preview = {
+        max_width = 600;
+        max_height = 600;
+      };
       open = {
         run = ''
           if [[ "$1" =~ \.(png|jpg|jpeg|webp|gif)$ ]]; then
