@@ -8,7 +8,7 @@
         "type": "ext/workspaces",
         "exec-if": "test \"$XDG_CURRENT_DESKTOP\" = mango",
         "format": "{icon}",
-        "ignore-hidden": false,
+        "ignore-hidden": true,
         "on-click": "activate",
         "sort-by-id": true
     },
