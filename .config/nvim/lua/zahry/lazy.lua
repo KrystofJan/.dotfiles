@@ -24,7 +24,6 @@ require('lazy').setup({
   require 'zahry.plugins.undotree',
   require 'zahry.plugins.vimtex',
   require 'zahry.plugins.debug',
-  require 'zahry.plugins.augment',
   require 'zahry.plugins.markdown',
   require 'zahry.plugins.hardtime',
   require 'zahry.plugins.ts-error-translator',
