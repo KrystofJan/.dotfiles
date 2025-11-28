@@ -39,6 +39,7 @@ in {
     '';
 
     ".gitconfig".source = ./../.gitconfig-personal;
+    ".config/rofi".source = ./../.config/rofi;
   };
 
   services.udiskie = {

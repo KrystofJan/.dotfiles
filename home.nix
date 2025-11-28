@@ -99,7 +99,6 @@ in {
     ".config/ghostty".source = ./.config/ghostty;
     ".config/lazygit".source = ./.config/lazygit;
     ".config/tmux".source = ./.config/tmux;
-    ".config/rofi".source = ./.config/rofi;
     ".gitconfig-base".source = ./.gitconfig-base;
     ".gitconfig-corellium".source = ./.gitconfig-corellium;
     "fzf-git.sh/fzf-git.sh".source = ./fzf-git.sh;
