@@ -1,0 +1,22 @@
+{
+    "include": "config-base.jsonc",
+    "modules-left": [
+        "hyprland/workspaces",
+    ],
+    "hyprland/workspaces": {
+        "type": "hyprland/workspaces",
+        "exec-if": "test \"$XDG_CURRENT_DESKTOP\" = hyprland",
+        "on-click": "activate",
+        "disable-scroll": true,
+        "all-outputs": true,
+        "show-special": true,
+        "persistent-workspaces": {
+            "*": [
+                1,
+                2,
+                3,
+                9
+            ]
+        }
+    },
+}

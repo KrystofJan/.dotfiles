@@ -4,10 +4,6 @@
     "position": "top",
     "height": 16,
     "spacing": 16,
-    "modules-left": [
-        "hyprland/workspaces",
-        "ext/workspaces",
-    ],
     "modules-center": [
         "clock"
     ],
@@ -26,41 +22,6 @@
     ],
     "name": "mainbar",
     "fixed-center": true,
-    // ========================================
-    // WORKSPACES MODULES (Hyprland + MangoWC)
-    // ========================================
-    "workspaces": {
-        "type": "hyprland/workspaces",
-        "conditions": {
-            "env": {
-                "XDG_CURRENT_DESKTOP": "Hyprland"
-            }
-        },
-        "on-click": "activate",
-        "disable-scroll": true,
-        "all-outputs": true,
-        "show-special": true,
-        "persistent-workspaces": {
-            "*": [
-                1,
-                2,
-                3,
-                9
-            ]
-        }
-    },
-    "workspaces#fallback": {
-        "type": "ext/workspaces",
-        "conditions": {
-            "env": {
-                "XDG_CURRENT_DESKTOP": "mango"
-            }
-        },
-        "format": "{icon}",
-        "ignore-hidden": false,
-        "on-click": "activate",
-        "sort-by-id": true
-    },
     // ========================================
     // HYPRLAND WINDOW MODULE
     // ========================================

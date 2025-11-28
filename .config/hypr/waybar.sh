@@ -1,8 +1,3 @@
 #!/bin/sh
-killall .waybar-wrapped
-if [[ $USER = "zahry" ]]
-then
-    waybar -c ~/.config/waybar/config.jsonc & -s ~/.config/waybar/style.css
-else
-    waybar &
-fi
+pkill waybar
+waybar -c ~/.config/waybar/config-hyprland.jsonc -s ~/.config/waybar/style.css &

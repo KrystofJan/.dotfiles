@@ -1,0 +1,15 @@
+// -*- mode: jsonc -*-
+{
+    "include": "config-base.jsonc",
+    "modules-left": [
+        "ext/workspaces",
+    ],
+    "ext/workspaces": {
+        "type": "ext/workspaces",
+        "exec-if": "test \"$XDG_CURRENT_DESKTOP\" = mango",
+        "format": "{icon}",
+        "ignore-hidden": false,
+        "on-click": "activate",
+        "sort-by-id": true
+    },
+}
