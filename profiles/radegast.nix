@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }: let
@@ -13,16 +11,11 @@
     paths = treesitterWithGrammars.dependencies;
   };
 in {
-  home.username = "zahry";
-  home.homeDirectory = "/home/zahry";
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "aseprite"
-    ];
+  home.username = "bielobog";
+  home.homeDirectory = "/home/bielobog";
 
   home.packages = with pkgs; [
-    aseprite
+    tree-sitter
   ];
 
   programs.neovim = {
@@ -35,12 +28,14 @@ in {
 
   # Append the Treesitter parsers path to init.lua
   home.file = {
-    # Append the Treesitter parsers path to init.lua
     ".config/nvim/lua/zahry/init.lua".text = ''
       vim.opt.runtimepath:append("${treesitterParsers}")
+      require'nvim-treesitter.configs'.setup {
+        highlight = { enable = true },
+        indent = { enable = true },
+      }
     '';
 
     ".gitconfig".source = ./../.gitconfig-personal;
-    ".config/tmux".source = ./.config/tmux;
   };
 }

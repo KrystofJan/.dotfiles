@@ -60,6 +60,18 @@
       ];
     };
 
+    homeConfigurations."radegast" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
+      extraSpecialArgs = { inherit auggie; };
+
+      modules = [
+        ./home.nix
+        ./profiles/radegast.nix
+        auggie.homeManagerModules.default
+      ];
+    };
+
     devShell.${system} = pkgs.mkShell {
       packages = [
         pkgs.nixd
