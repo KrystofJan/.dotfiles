@@ -6,7 +6,12 @@
   ...
 }: {
   options.zsh = {
-    enable = lib.mkEnableOption "Enable tmux";
+    enable = lib.mkEnableOption "Enable zsh";
+    initContent = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+      description = "Extra commands that should be added to .zshrc";
+    };
   };
 
   config = lib.mkIf config.zsh.enable {
@@ -25,7 +30,7 @@
           };
         }
       ];
-      initContent = builtins.readFile ../../.zshrc;
+      initContent = config.zsh.initContent;
     };
   };
 }

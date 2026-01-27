@@ -68,14 +68,5 @@
         auggie.homeManagerModules.default
       ];
     };
-
-    devShell.${system} = pkgs.mkShell {
-      packages = [
-        pkgs.nixd
-        pkgs.alejandra
-        pkgs.lua-language-server
-      ];
-      shellHook = "zsh";
-    };
   };
 }

@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  auggie,
-  ...
-}: {
+{...}: {
   home.stateVersion = "24.11";
 
   home.file = {

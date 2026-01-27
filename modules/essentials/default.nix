@@ -15,6 +15,7 @@
       alejandra
       bash-language-server
       vscode-json-languageserver
+      lua-language-server
     ];
   };
 }

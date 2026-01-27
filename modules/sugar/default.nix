@@ -24,6 +24,9 @@ in {
   };
 
   config = lib.mkIf config.sugar.enable {
+    # Add zsh configuration for sugar tools
+    zsh.initContent = lib.mkAfter (builtins.readFile ./sugar.zsh);
+
     home.packages = with pkgs; [
       atuin
       btop

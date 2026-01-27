@@ -10,6 +10,9 @@
   };
 
   config = lib.mkIf config.development.enable {
+    # Add zsh configuration for development tools
+    zsh.initContent = lib.mkAfter (builtins.readFile ./development.zsh);
+
     home.packages = with pkgs; [
       act
       fd
