@@ -21,14 +21,14 @@
   in {
     packages.${system}.default = pkgs.neovim;
 
-    homeConfigurations."krystofjan" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."chernobog" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
-      extraSpecialArgs = { inherit auggie; };
+      extraSpecialArgs = {inherit auggie;};
 
       modules = [
         ./home.nix
-        ./profiles/krystofjan.nix
+        ./profiles/chernobog.nix
         auggie.homeManagerModules.default
       ];
     };
@@ -36,11 +36,11 @@
     homeConfigurations."veles" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
-      extraSpecialArgs = { inherit auggie; };
+      extraSpecialArgs = {inherit auggie;};
 
       modules = [
         ./home.nix
-        ./profiles/zahry.nix
+        ./profiles/veles.nix
         auggie.homeManagerModules.default
       ];
     };
@@ -48,7 +48,7 @@
     homeConfigurations."perun" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
-      extraSpecialArgs = { inherit auggie; };
+      extraSpecialArgs = {inherit auggie;};
 
       modules = [
         ./home.nix
@@ -60,7 +60,7 @@
     homeConfigurations."radegast" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
-      extraSpecialArgs = { inherit auggie; };
+      extraSpecialArgs = {inherit auggie;};
 
       modules = [
         ./home.nix

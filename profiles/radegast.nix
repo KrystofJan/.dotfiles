@@ -11,6 +11,23 @@
     paths = treesitterWithGrammars.dependencies;
   };
 in {
+  imports = [
+        ../modules/zsh/default.nix
+        ../modules/tmux/default.nix
+        ../modules/sugar/default.nix
+        ../modules/desktop/default.nix
+        ../modules/essentials/default.nix
+        ../modules/development/default.nix
+  ];
+
+  programs.auggie.enable = false;
+  zsh.enable = false;
+  tmux.enable = true;
+  sugar.enable = false;
+  desktop.enable = false;
+  essentials.enable = true;
+  development.enable = true;
+
   home.username = "bielobog";
   home.homeDirectory = "/home/bielobog";
 
