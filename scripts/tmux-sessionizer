@@ -8,7 +8,7 @@ declare -A SESSION_DIRECTORY_MAP=(
   ["corellium-rest"]="$HOME/work/corellium"
 )
 
-DESIRED_SESSION="$(printf '%s\n' "${DEFINED_SESSIONS[@]}" | rofi -dmenu -p "Choose an option")"
+DESIRED_SESSION="$(printf '%s\n' "${DEFINED_SESSIONS[@]}" | rofi -dmenu -p "sesh")"
 
 if ! printf '%s\n' "${DEFINED_SESSIONS[@]}" | grep -Fxqs -- "$DESIRED_SESSION"; then
   echo "Session undefined: $DESIRED_SESSION"

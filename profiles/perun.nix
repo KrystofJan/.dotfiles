@@ -40,7 +40,7 @@ in {
 
     ".gitconfig".source = ./../.gitconfig-personal;
     ".config/rofi".source = ./../.config/rofi;
-    ".config/tmux".source = ./.config/tmux;
+    ".config/tmux".source = ./../.config/tmux;
   };
 
   services.udiskie = {

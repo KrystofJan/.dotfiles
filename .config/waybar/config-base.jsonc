@@ -16,9 +16,6 @@
         "battery#bat2",
         "power-profiles-daemon",
         "tray",
-        "custom/media",
-        "keyboard-state",
-        "mpd"
     ],
     "name": "mainbar",
     "fixed-center": true,

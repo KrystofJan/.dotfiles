@@ -66,29 +66,25 @@ window#waybar {
 }
 
 #workspaces button {
+  padding: .2em .5em;
   color: @fg;
   transition: all 0.4s ease-out;
 }
 
 #workspaces button.active {
-  background: @magentaAlpha;
-  border-radius: 2px;
+  background: @cyanAlpha;
+  border-radius: .2em;
 }
 
 #workspaces button:hover {
   color: @magenta;
   background: @orangeAlpha;
-  border-radius: 2px;
+  border-radius: .2em;
 }
 
 #workspaces button.empty {
   color: @blue;
 }
-
-#window {
-  margin: 0px 4px;
-}
-
 
 #pulseaudio {
   padding: 0px 8px;

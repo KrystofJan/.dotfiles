@@ -1,0 +1,28 @@
+#!/bin/bash
+source "$HOME/.dotfiles/.env"
+
+SCRIPTS=("corellium vpn up" "corellium vpn down")
+
+declare -A SCRIPT_COMMAND_MAP=(
+  ["corellium vpn up"]="wg-quick up belobog"
+  ["corellium vpn down"]="wg-quick down belobog"
+)
+
+DESIRED_SCRIPT="$(printf '%s\n' "${SCRIPTS[@]}" | rofi -dmenu -p "Choose an option")"
+
+case "$DESIRED_SCRIPT" in
+  "corellium vpn up")
+    printf '%s\n' "$CORELLIUM_VPN_PASSWORD" | sudo -S wg-quick up belobog
+    ;;
+
+  "corellium vpn down")
+    printf '%s\n' "$CORELLIUM_VPN_PASSWORD" | sudo -S wg-quick down belobog
+    ;;
+
+  *)
+    cmd=${SCRIPT_COMMAND_MAP["$DESIRED_SCRIPT"]}
+    if [[ -n "$cmd" ]]; then
+      eval "$cmd"
+    fi
+    ;;
+esac

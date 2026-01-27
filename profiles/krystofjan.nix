@@ -13,6 +13,6 @@
 
   home.file = {
     ".gitconfig".source = ./../.gitconfig-work;
-    ".config/tmux".source = ./.config/tmux;
+    ".config/tmux".source = ./../.config/tmux;
   };
 }

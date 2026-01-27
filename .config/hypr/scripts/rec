@@ -1,0 +1,130 @@
+#!/bin/bash
+set -euo pipefail
+
+VIDEOS_DIR="${HOME}/Videos"
+PID_FILE=/tmp/screen_record.pid
+
+mkdir -p "$VIDEOS_DIR"
+TIMESTAMP="$(date --iso-8601=seconds)"
+OUTPUT="$VIDEOS_DIR/${TIMESTAMP}.mp4"
+
+# 🔁 Toggle logic — Stop if already recording
+if [[ -f "$PID_FILE" ]] && ps -p "$(cat "$PID_FILE")" > /dev/null 2>&1; then
+  notify-send -i display "🛑 Stopping recording..."
+  kill -SIGINT "$(cat "$PID_FILE")" || true
+  rm -f "$PID_FILE"
+  exit 0
+fi
+
+SESSION_TYPE="${XDG_SESSION_TYPE:-}"
+if [[ -z "$SESSION_TYPE" && -n "${WAYLAND_DISPLAY:-}" ]]; then
+  SESSION_TYPE="wayland"
+fi
+if [[ -z "$SESSION_TYPE" ]]; then
+  SESSION_TYPE="x11"
+fi
+
+# =========================
+# ✅ Wayland (Hyprland)
+# =========================
+if [[ "$SESSION_TYPE" == "wayland" ]] && command -v hyprctl >/dev/null 2>&1; then
+  command -v jq >/dev/null 2>&1 || { echo "❌ 'jq' is required."; exit 1; }
+  command -v wf-recorder >/dev/null 2>&1 || {
+    echo "❌ 'wf-recorder' is required on Wayland."
+    exit 1
+  }
+
+  # ✅ Get focused window -> monitor name
+  ACTIVE="$(hyprctl activewindow -j)"
+  MON_NAME="$(echo "$ACTIVE" | jq -r '.monitor')"
+
+  if [[ -z "$MON_NAME" || "$MON_NAME" == "null" ]]; then
+    echo "❌ Could not determine active window's monitor (Hyprland)."
+    exit 1
+  fi
+
+  # 🔍 Get that monitor's geometry
+  MON="$(hyprctl monitors -j | jq -r --arg m "$MON_NAME" '.[] | select(.name == $m)')"
+
+  if [[ -z "$MON" || "$MON" == "null" ]]; then
+    echo "❌ Could not find monitor geometry for '$MON_NAME' (Hyprland)."
+    exit 1
+  fi
+
+  OFF_X="$(echo "$MON" | jq -r '.x')"
+  OFF_Y="$(echo "$MON" | jq -r '.y')"
+  W="$(echo "$MON" | jq -r '.width')"
+  H="$(echo "$MON" | jq -r '.height')"
+
+  GEOM="${OFF_X},${OFF_Y} ${W}x${H}"
+
+  wf-recorder -g "$GEOM" -f "$OUTPUT" >/dev/null 2>&1 &
+  REC_PID=$!
+
+  notify-send -i display "✅ Recording started (Hyprland, PID $REC_PID)."
+  echo "$REC_PID" > "$PID_FILE"
+  echo "✅ Recording started (Hyprland, PID $REC_PID). Run this script again to stop."
+  exit 0
+fi
+
+# =========================
+# ✅ X11 (i3 + ffmpeg)
+# =========================
+if [[ "$SESSION_TYPE" == "x11" ]]; then
+  command -v i3-msg >/dev/null 2>&1 || { echo "❌ 'i3-msg' is required for X11 path."; exit 1; }
+  command -v jq >/dev/null 2>&1 || { echo "❌ 'jq' is required."; exit 1; }
+  command -v xrandr >/dev/null 2>&1 || { echo "❌ 'xrandr' is required on X11 path."; exit 1; }
+  command -v ffmpeg >/dev/null 2>&1 || { echo "❌ 'ffmpeg' is required."; exit 1; }
+
+  FOCUSED_INFO="$(i3-msg -t get_tree | jq '.. | objects | select(.focused? == true)')"
+  WIN_X="$(echo "$FOCUSED_INFO" | jq -r '.rect.x')"
+  WIN_Y="$(echo "$FOCUSED_INFO" | jq -r '.rect.y')"
+
+  if [[ -z "$WIN_X" || -z "$WIN_Y" || "$WIN_X" == "null" || "$WIN_Y" == "null" ]]; then
+    echo "❌ Could not determine focused window position."
+    exit 1
+  fi
+
+  MONITOR_LINE="$(xrandr | grep " connected" | while read -r line; do
+    GEOM="$(echo "$line" | grep -oP '\d+x\d+\+\d+\+\d+' || true)"
+    [[ -z "$GEOM" ]] && continue
+
+    MON_X="$(echo "$GEOM" | cut -d'+' -f2)"
+    MON_Y="$(echo "$GEOM" | cut -d'+' -f3)"
+    MON_W="$(echo "$GEOM" | cut -d'x' -f1)"
+    MON_H_TMP="$(echo "$GEOM" | cut -d'x' -f2)"
+    MON_H="$(echo "$MON_H_TMP" | cut -d'+' -f1)"
+
+    if (( WIN_X >= MON_X && WIN_X < MON_X + MON_W && WIN_Y >= MON_Y && WIN_Y < MON_Y + MON_H )); then
+      echo "$line"
+      break
+    fi
+  done)"
+
+  if [[ -z "$MONITOR_LINE" ]]; then
+    echo "❌ Could not map focused window to a monitor."
+    exit 1
+  fi
+
+  GEOMETRY="$(echo "$MONITOR_LINE" | grep -oP '\d+x\d+\+\d+\+\d+')"
+  RESOLUTION="$(echo "$GEOMETRY" | cut -d'+' -f1)"
+  OFFSET_X="$(echo "$GEOMETRY" | cut -d'+' -f2)"
+  OFFSET_Y="$(echo "$GEOMETRY" | cut -d'+' -f3)"
+
+  ffmpeg \
+    -video_size "$RESOLUTION" \
+    -framerate 30 \
+    -f x11grab \
+    -i ":0.0+$OFFSET_X,$OFFSET_Y" \
+    -c:v libx264 -preset ultrafast -crf 23 \
+    "$OUTPUT" > /dev/null 2>&1 &
+
+  REC_PID=$!
+  notify-send -i display "✅ Recording started (X11, PID $REC_PID)."
+  echo "$REC_PID" > "$PID_FILE"
+  echo "✅ Recording started (X11, PID $REC_PID). Run this script again to stop."
+  exit 0
+fi
+
+echo "❌ Unsupported setup: session type='$SESSION_TYPE'. If you're on Wayland but not Hyprland, tell me your compositor."
+exit 1

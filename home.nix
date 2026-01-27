@@ -26,6 +26,7 @@ in {
 
   home.packages = with pkgs; [
     act
+    alejandra
     atuin
     btop
     cowsay
@@ -99,6 +100,8 @@ in {
     ".config/kitty".source = ./.config/kitty;
     ".config/ghostty".source = ./.config/ghostty;
     ".config/lazygit".source = ./.config/lazygit;
+    # ".config/tmux".source = ./.config/tmux;
+    # ".config/rofi".source = ./../.config/rofi;
     ".config/rofi".source = ./.config/rofi;
     ".gitconfig-base".source = ./.gitconfig-base;
     ".gitconfig-corellium".source = ./.gitconfig-corellium;
@@ -123,33 +126,45 @@ in {
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
+  
     theme = {
       flavor = {
         dark = "onedark";
         light = "onedark";
       };
     };
+  
     settings = {
       mgr = {
         show_hidden = true;
-        ratio = [1 3 4];
+        ratio = [ 1 3 4 ];
       };
+  
       preview = {
         max_width = 600;
         max_height = 600;
       };
+  
+      opener = {
+        feh = [
+          {
+            run = "feh --auto-zoom --scale-down \"$@\"";
+            desc = "Open images with feh";
+            orphan = true;
+          }
+        ];
+      };
+  
       open = {
-        run = ''
-          if [[ "$1" =~ \.(png|jpg|jpeg|webp|gif)$ ]]; then
-            open --block -- feh "$1"
-          else
-            open -- "$1"
-          fi
-        '';
-        desc = "Open files, using feh for images";
+        rules = [
+          {
+            mime = "image/*";
+            use = [ "feh" ];
+          }
+        ];
       };
     };
-
+  
     flavors = {
       kanagawa = kanagawaTheme;
       onedark = onedarkTheme;

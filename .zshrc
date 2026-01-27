@@ -101,3 +101,5 @@ echo "$HOST" | figlet -f ~/.dotfiles/Bloody.flf -w $(tput cols) -c
 sesh() {
   "$HOME/.dotfiles/tmux-sessionizer" "$1"
 }
+
+source "$HOME/.dotfiles/.env"

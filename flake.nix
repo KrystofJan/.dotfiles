@@ -7,15 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    alejandra.url = "github:kamadorueda/alejandra/3.1.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
     auggie.url = "github:KrystofJan/auggie-nix-flake";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    alejandra,
     auggie,
     ...
   }: let
@@ -75,9 +72,10 @@
     devShell.${system} = pkgs.mkShell {
       packages = [
         pkgs.nixd
-        alejandra.defaultPackage.${system}
+        pkgs.alejandra
         pkgs.lua-language-server
       ];
+      shellHook = "zsh";
     };
   };
 }

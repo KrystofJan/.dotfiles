@@ -41,6 +41,6 @@ in {
     '';
 
     ".gitconfig".source = ./../.gitconfig-personal;
-    ".config/tmux".source = ./.config/tmux;
+    ".config/tmux".source = ./../.config/tmux;
   };
 }
