@@ -15,6 +15,8 @@
   };
 
   config = lib.mkIf config.zsh.enable {
+    zsh.initContent = lib.mkAfter (builtins.readFile ../../.zshrc);
+
     programs.zsh = {
       enable = true;
       enableCompletion = true;
