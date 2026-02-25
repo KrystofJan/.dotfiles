@@ -5,13 +5,6 @@
   home,
   ...
 }: let
-  kanagawaTheme = pkgs.fetchFromGitHub {
-    owner = "dangooddd";
-    repo = "kanagawa.yazi";
-    rev = "31167ed54c9cc935b2fa448d64d367b1e5a1105d"; # You can specify a specific commit/tag here
-    sha256 = "sha256-phwGd1i/n0mZH/7Ukf1FXwVgYRbXQEWlNRPCrmR5uNk="; # Leave empty first, Nix will tell you the correct hash
-  };
-
   onedarkTheme = pkgs.fetchFromGitHub {
     owner = "BennyOe";
     repo = "onedark.yazi";
@@ -39,7 +32,6 @@ in {
       ripgrep
       starship
 
-      neofetch
       cowsay
       figlet
 
@@ -61,6 +53,7 @@ in {
     programs.yazi = {
       enable = true;
       enableZshIntegration = true;
+      shellWrapperName = "y";
 
       theme = {
         flavor = {
@@ -81,6 +74,13 @@ in {
         };
 
         opener = {
+          edit = [
+            {
+              run = ''nvim "$@"'';
+              desc = "Edit in neovim";
+              block = true;
+            }
+          ];
           feh = [
             {
               run = "feh --auto-zoom --scale-down \"$@\"";
@@ -88,20 +88,82 @@ in {
               orphan = true;
             }
           ];
+          mpv = [
+            {
+              run = ''mpv --force-window "$@"'';
+              desc = "Open videos";
+              orphan = true;
+            }
+          ];
+          open = [
+            {
+              run = ''xdg-open "$1"'';
+              desc = "Open";
+            }
+          ];
+          reveal = [
+            {
+              run = ''xdg-open "$(dirname "$1")"'';
+              desc = "Reveal";
+            }
+          ];
+          extract = [
+            {
+              run = ''ya pub extract --list "$@"'';
+              desc = "Extract here";
+            }
+          ];
         };
 
         open = {
           rules = [
+            # Folder
+            {
+              name = "*/";
+              use = ["edit" "open" "reveal"];
+            }
+            # Text
+            {
+              mime = "text/*";
+              use = ["edit" "reveal"];
+            }
+            # Media
+            {
+              mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}";
+              use = ["extract" "reveal"];
+            }
+            # JSON
+            {
+              mime = "application/{json,ndjson}";
+              use = ["edit" "reveal"];
+            }
+            {
+              mime = "*/javascript";
+              use = ["edit" "reveal"];
+            }
+            # Empty file
+            {
+              mime = "inode/empty";
+              use = ["edit" "reveal"];
+            }
+            # Fallback
+            {
+              name = "*";
+              use = ["open" "reveal"];
+            }
             {
               mime = "image/*";
               use = ["feh"];
+            }
+            {
+              mime = "video/*";
+              use = ["mpv"];
             }
           ];
         };
       };
 
       flavors = {
-        kanagawa = kanagawaTheme;
         onedark = onedarkTheme;
       };
     };

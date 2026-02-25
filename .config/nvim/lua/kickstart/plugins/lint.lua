@@ -5,12 +5,25 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
+
+      -- Use the first available linter (oxlint preferred, fallback to eslint)
+      local function get_js_linter()
+        if vim.fn.executable('oxlint') == 1 then
+          return { 'oxlint' }
+        elseif vim.fn.executable('eslint') == 1 then
+          return { 'eslint' }
+        end
+        return {}
+      end
+
+      local js_linters = get_js_linter()
+
       lint.linters_by_ft = {
         -- markdown = { 'markdownlint' },
-        javascript = { 'eslint' },
-        javascriptreact = { 'eslint' },
-        typescript = { 'eslint' },
-        typescriptreact = { 'eslint' },
+        javascript = js_linters,
+        javascriptreact = js_linters,
+        typescript = js_linters,
+        typescriptreact = js_linters,
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

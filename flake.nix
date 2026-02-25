@@ -8,12 +8,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     auggie.url = "github:KrystofJan/auggie-nix-flake";
+
+    continue-cli = {
+      url = "github:KrystofJan/continue-cli-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
-    nixpkgs,
-    home-manager,
     auggie,
+    continue-cli,
+    home-manager,
+    nixpkgs,
     ...
   }: let
     system = "x86_64-linux";
@@ -23,9 +29,7 @@
 
     homeConfigurations."chernobog" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-
-      extraSpecialArgs = {inherit auggie;};
-
+      extraSpecialArgs = {inherit auggie continue-cli system;};
       modules = [
         ./home.nix
         ./profiles/chernobog.nix

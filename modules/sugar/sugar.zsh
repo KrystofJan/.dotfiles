@@ -18,14 +18,3 @@ eval "$(atuin init zsh)"
 
 # Starship - better prompt
 eval "$(starship init zsh)"
-
-# Yazi - terminal file manager
-# Function to change directory on exit
-function y() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-  yazi "$@" --cwd-file="$tmp"
-  IFS= read -r -d '' cwd < "$tmp"
-  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-  rm -f -- "$tmp"
-}
-

@@ -1,14 +1,13 @@
 return {
-  "OXY2DEV/markview.nvim",
-  lazy = false,
-
-  dependencies = {
-    "saghen/blink.cmp"
-  },
+  "selimacerbas/markdown-preview.nvim",
+  dependencies = { "selimacerbas/live-server.nvim" },
   config = function()
-    vim.keymap.set('n', '<leader>md', function()
-      print('toggling md')
-      vim.cmd.Markview('Toggle')
-    end, { desc = '[M]ark[D]own toggle' })
-  end
-};
+    require("markdown_preview").setup({
+      -- all optional; sane defaults shown
+      instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
+      port = 0,                   -- 0 = auto (8421 for takeover, OS-assigned for multi)
+      open_browser = true,
+      debounce_ms = 300,
+    })
+  end,
+}

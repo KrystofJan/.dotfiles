@@ -1,11 +1,13 @@
 #!/bin/bash
 source "$HOME/.dotfiles/.env"
 
-SCRIPTS=("connect headphones" "disconnect headphones" )
+SCRIPTS=("connect headphones" "disconnect headphones" "connect mouse" "disconnect mouse")
 
 declare -A SCRIPT_COMMAND_MAP=(
   ["connect headphones"]="bluetoothctl connect $HEADPHONE_MAC"
   ["disconnect headphones"]="bluetoothctl disconnect $HEADPHONE_MAC"
+  ["connect mouse"]="bluetoothctl connect $MOUSE_MAC"
+  ["disconnect mouse"]="bluetoothctl disconnect $MOUSE_MAC"
 )
 
 DESIRED_SCRIPT="$(printf '%s\n' "${SCRIPTS[@]}" | rofi -dmenu -p "Choose an option")"

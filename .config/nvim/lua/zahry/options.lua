@@ -39,3 +39,5 @@ vim.opt.guicursor = 'i:block'
 vim.opt.scrolloff = 10
 
 vim.opt.colorcolumn = '80,120'
+
+vim.opt.termguicolors = true

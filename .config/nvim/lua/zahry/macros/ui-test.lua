@@ -2,7 +2,7 @@ local repo_utils = require('zahry.utils.repo')
 
 -- Setup the repository utility with ui-test configuration
 repo_utils.setup({
-  repo_name = 'ui-test'
+  repo_name = 'corellium-testware'
 })
 
 vim.api.nvim_create_autocmd('BufEnter', {

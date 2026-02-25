@@ -2,8 +2,6 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    local lspconfig = require 'lspconfig'
-
     -- List of LSP servers and their expected binary names
     local servers = {
       lua_ls = 'lua-language-server',
@@ -46,10 +44,13 @@ return {
     local counter = 0
     for lsp, bin in pairs(servers) do
       if vim.fn.executable(bin) == 1 then
-        lspconfig[lsp].setup {
+        -- Configure the LSP with custom settings
+        vim.lsp.config(lsp, {
           on_attach = on_attach,
           capabilities = capabilities,
-        }
+        })
+        -- Enable the LSP to auto-activate
+        vim.lsp.enable(lsp)
       else
         -- vim.notify('Skipping LSP: ' .. lsp .. ' (missing binary: ' .. bin .. ')', vim.log.levels.WARN)
         missing_lsps[counter] = lsp

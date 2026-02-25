@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SCRIPTS=("master" "dwindle" "scrolling")
+
+DESIRED_SCRIPT="$(printf '%s\n' "${SCRIPTS[@]}" | rofi -dmenu -p "Choose an option")"
+
+cmd=$(printf 'hyprctl keyword general:layout %s\n' "${DESIRED_SCRIPT}")
+if [[ -n "$cmd" ]]; then
+  eval "$cmd"
+fi

@@ -2,9 +2,8 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    local lspconfig = require 'lspconfig'
-
-    -- List of LSP servers and their expected binary names
+    -- List of LSP servers and their expected binary names.
+    -- kotlin_language_server is configured separately below with Android classpath.
     local servers = {
       lua_ls = 'lua-language-server',
       pyright = 'pyright-langserver',
@@ -18,7 +17,8 @@ return {
       ols = 'ols',
       nixd = 'nixd',
       zls = 'zls',
-      tailwindcss = 'tailwindcss-language-server'
+      tailwindcss = 'tailwindcss-language-server',
+      terraformls = 'terraform-ls',
     }
 
     local on_attach = function(client, bufnr)
@@ -43,19 +43,53 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     local missing_lsps = {}
-    local counter = 0
     for lsp, bin in pairs(servers) do
       if vim.fn.executable(bin) == 1 then
-        lspconfig[lsp].setup {
+        -- Configure the LSP with custom settings
+        vim.lsp.config(lsp, {
           on_attach = on_attach,
           capabilities = capabilities,
-        }
+        })
+        -- Enable the LSP to auto-activate
+        vim.lsp.enable(lsp)
       else
-        -- vim.notify('Skipping LSP: ' .. lsp .. ' (missing binary: ' .. bin .. ')', vim.log.levels.WARN)
-        missing_lsps[counter] = lsp
-        counter = counter + 1
+        table.insert(missing_lsps, lsp)
       end
     end
-    print('Skipping these LSPs due to not being able to find binary: ' .. table.concat(missing_lsps, ', '))
+
+    if #missing_lsps > 0 then
+      print('Skipping these LSPs due to not being able to find binary: ' .. table.concat(missing_lsps, ', '))
+    end
+
+    -- Kotlin: override the generic setup with Android SDK classpath so that
+    -- android.* / androidx.* references resolve correctly.
+    if vim.fn.executable('kotlin-language-server') == 1 then
+      local android_sdk = vim.fn.getenv('ANDROID_SDK_ROOT')
+      local extra_classpath = {}
+      if android_sdk ~= nil and android_sdk ~= vim.NIL and android_sdk ~= '' then
+        -- API 32 matches the project's compileSdk
+        table.insert(extra_classpath, android_sdk .. '/platforms/android-32/android.jar')
+      end
+      vim.lsp.config('kotlin_language_server', {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = {
+          kotlin = {
+            compiler = {
+              jvm = {
+                target = '1.8',
+              },
+            },
+            externalSources = { useKlsScheme = true },
+          },
+        },
+        init_options = {
+          storagePath = vim.fn.stdpath('cache') .. '/kotlin-language-server',
+          classpath = table.concat(extra_classpath, ':'),
+        },
+      })
+      vim.lsp.enable('kotlin_language_server')
+    end
   end,
 }
+
