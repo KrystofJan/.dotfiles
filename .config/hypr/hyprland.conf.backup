@@ -1,0 +1,9 @@
+exec-once = hypridle
+
+source = ~/.config/hypr/wm/input.conf
+source = ~/.config/hypr/wm/general.conf
+source = ~/.config/hypr/wm/env.conf
+source = ~/.config/hypr/wm/binds.conf
+source = ~/.config/hypr/wm/workspace.conf
+
+exec-once=bash ~/.config/hypr/start.sh

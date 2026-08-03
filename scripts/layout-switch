@@ -1,10 +1,8 @@
 #!/bin/bash
 
-SCRIPTS=("master" "dwindle" "scrolling")
+LAYOUTS=("master" "dwindle" "scrolling")
+DESIRED_LAYOUT="$(printf '%s\n' "${LAYOUTS[@]}" | rofi -dmenu -p "Choose an option")"
 
-DESIRED_SCRIPT="$(printf '%s\n' "${SCRIPTS[@]}" | rofi -dmenu -p "Choose an option")"
-
-cmd=$(printf 'hyprctl keyword general:layout %s\n' "${DESIRED_SCRIPT}")
-if [[ -n "$cmd" ]]; then
-  eval "$cmd"
+if [[ -n "$DESIRED_LAYOUT" ]]; then
+  hyprctl eval "hl.config({ general = { layout = \"${DESIRED_LAYOUT}\" } })"
 fi
