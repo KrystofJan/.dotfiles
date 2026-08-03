@@ -3,7 +3,10 @@
 
   home.file = {
     ".config/nvim".source = ./.config/nvim;
+    ".gitconfig".source = ./.gitconfig;
     ".gitconfig-base".source = ./.gitconfig-base;
+    ".gitconfig-profiq".source = ./.gitconfig-profiq;
+    ".gitconfig-personal".source = ./.gitconfig-personal;
     ".gitconfig-corellium".source = ./.gitconfig-corellium;
   };
 

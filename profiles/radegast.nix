@@ -48,7 +48,5 @@ in {
         indent = { enable = true },
       }
     '';
-
-    ".gitconfig".source = ./../.gitconfig-personal;
   };
 }

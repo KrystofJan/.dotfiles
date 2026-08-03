@@ -14,12 +14,12 @@
   };
 in {
   imports = [
-        ../modules/zsh/default.nix
-        ../modules/tmux/default.nix
-        ../modules/sugar/default.nix
-        ../modules/desktop/default.nix
-        ../modules/essentials/default.nix
-        ../modules/development/default.nix
+    ../modules/zsh/default.nix
+    ../modules/tmux/default.nix
+    ../modules/sugar/default.nix
+    ../modules/desktop/default.nix
+    ../modules/essentials/default.nix
+    ../modules/development/default.nix
   ];
 
   programs.auggie.enable = true;
@@ -57,7 +57,6 @@ in {
       vim.opt.runtimepath:append("${treesitterParsers}")
     '';
 
-    ".gitconfig".source = ./../.gitconfig-personal;
     ".config/tmux".source = ./../.config/tmux;
   };
 }

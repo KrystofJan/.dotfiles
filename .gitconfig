@@ -1,10 +1,11 @@
-[user]
-name = Jan-Krystof Kujel Zahradnik
-email = jan.zahradnik@corellium.com
-
 [include]
     path = .gitconfig-base
+
+[include]
+    path = .gitconfig-personal
 
 [includeIf "gitdir:~/work/corellium/"]
     path = .gitconfig-corellium
 
+[includeIf "gitdir:~/work/profiq/"]
+    path = .gitconfig-profiq
