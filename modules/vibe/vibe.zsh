@@ -1,3 +1,4 @@
-export CLAUDE_CODE_USE_BEDROCK=1
-export AWS_PROFILE=jan-ai-tools-dev
-export AWS_REGION=us-east-1
+if command -v opencode >/dev/null 2>&1
+then
+    alias oc=opencode
+fi

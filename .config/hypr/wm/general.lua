@@ -1,6 +1,44 @@
 -- General Configuration
 
 local animSpeed = 1
+local mainMod = "SUPER"
+
+hl.bind("SUPER + o", function()
+  local current_gaps = hl.get_config("general.border_size")
+  if current_gaps == 0 then
+    -- Enable gaps and borders
+
+    hl.notification.create({
+      text = "Turning on gaps",
+      timeout = 3000 -- milliseconds
+    })
+    hl.config({
+      general = {
+        gaps_in = 4,
+        gaps_out = 4,
+        border_size = 3,
+
+        col = {
+          active_border = { colors = { "rgba(aca1cfff)", "rgba(E29ECAFF)" }, angle = 90 },
+          inactive_border = "rgba(2a2a2fff)",
+        },
+      },
+    })
+  else
+    -- Disable gaps and borders
+    hl.notification.create({
+      text = "Turning off gaps",
+      timeout = 3000 -- milliseconds
+    })
+    hl.config({
+      general = {
+        gaps_in = 0,
+        gaps_out = 0,
+        border_size = 0,
+      },
+    })
+  end
+end)
 
 hl.config({
   cursor = {
@@ -8,15 +46,6 @@ hl.config({
   },
 
   general = {
-    -- See https://wiki.hyprland.org/Configuring/Variables/ for more
-    gaps_in = 4,
-    gaps_out = 4,
-    border_size = 3,
-
-    col = {
-      active_border = { colors = { "rgba(aca1cfff)", "rgba(E29ECAFF)" }, angle = 90 },
-      inactive_border = "rgba(2a2a2fff)",
-    },
 
     layout = "dwindle",
 
